@@ -31,6 +31,18 @@ function Dashboard() {
     i18next.changeLanguage(lang)
   }
 
+  const onGetSearch = () => {
+    console.log('clicked')
+    getBusinessesSearch({ location: 'NYC' })
+    .unwrap()
+    .then((res) => {
+      console.tron('re', res)
+    })
+    .catch((err) => {
+      console.tron('er', err)
+    })
+  }
+
   useEffect(() => {
     console.tron('data', data)
   }, [data])
@@ -80,17 +92,7 @@ function Dashboard() {
 
           <TouchableOpacity
             style={[Common.button.circle, Gutters.marginBottomRegular, { zIndex: 999 }]}
-            onPress={() => {
-              console.log('clicked')
-              getBusinessesSearch({})
-              .unwrap()
-              .then((res) => {
-                console.tron('re', res)
-              })
-              .catch((err) => {
-                console.tron('er', err)
-              })
-            }}
+            onPress={onGetSearch}
           >
             <Text style={[Common.button.title]}>
               GET
