@@ -3,27 +3,62 @@
  *
  * Use it to define generic component styles (e.g. the default text styles, default button styles...).
  */
-import { StyleSheet } from 'react-native';
-import buttonStyles from './components/Buttons';
-import { CommonParams } from '../../@types/theme';
 
-export default function <C>({ Colors, ...args }: CommonParams<C>) {
+import { CommonParams } from '@appTypes/theme'
+
+import buttonStyles from './components/Buttons'
+import textInputStyles from './components/TextInputs'
+
+export default function <C> ({ Colors, ...args }: CommonParams<C>) {
   return {
     button: buttonStyles({ Colors, ...args }),
-    ...StyleSheet.create({
-      backgroundPrimary: {
-        backgroundColor: Colors.primary,
+
+    textInput: textInputStyles({ Colors, ...args }),
+
+    // Shadow
+    headerShadow: {
+      shadowColor: Colors.black900,
+      shadowOffset: {
+        width: 0,
+        height: 2,
       },
-      backgroundReset: {
-        backgroundColor: Colors.transparent,
+      shadowOpacity: 0.23,
+      shadowRadius: 2.62,
+
+      elevation: 2,
+    },
+    cardShadow: {
+      shadowColor: Colors.black500,
+      shadowOffset: {
+        width: 0,
+        height: 2,
       },
-      textInput: {
-        backgroundColor: Colors.inputBackground,
-        color: Colors.textGray400,
-        height: 45,
-        borderRadius: 10,
-        paddingStart: 20,
+      shadowOpacity: 0.23,
+      shadowRadius: 2.62,
+
+      elevation: 4,
+    },
+    buttonShadow: {
+      shadowColor: Colors.black500,
+      shadowOffset: {
+        width: 0,
+        height: 2,
       },
-    }),
-  };
+      shadowOpacity: 0.23,
+      shadowRadius: 2.62,
+
+      elevation: 2,
+    },
+    noButtonShadow: {
+      shadowColor: Colors.transparent,
+      shadowOffset: {
+        width: 0,
+        height: 0,
+      },
+      shadowOpacity: 0,
+      shadowRadius: 0,
+
+      elevation: 0,
+    },
+  }
 }

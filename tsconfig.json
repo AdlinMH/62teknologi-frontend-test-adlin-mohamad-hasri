@@ -1,15 +1,46 @@
 {
+  "compileOnSave": false,
   "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    "target": "es2015",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
     "types": ["react-native", "jest", "node"],
     "typeRoots": [
       "@types",
       "./node_modules/@types"
     ],
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "types/*": ["./@types/*"]
-    }
-  }
+      "@appTypes/*": ["./@types/*"]
+    },
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
 }

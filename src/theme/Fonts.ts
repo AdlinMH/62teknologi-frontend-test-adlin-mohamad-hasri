@@ -1,75 +1,184 @@
 /**
  * This file contains all application's style relative to fonts
  */
-import { StyleSheet } from 'react-native';
-import { ThemeVariables } from '../../@types/theme';
+import { StyleSheet } from 'react-native'
 
-export default function ({ FontSize, Colors }: ThemeVariables) {
+import { FontColorStyleOptions, FontFamilyStyleGutters, ThemeVariables } from '@appTypes/theme'
+
+import { firstLetterToUpperCase } from '@/utils/functions/strings'
+
+export default function ({ FontSize, FontFamily, Colors }: ThemeVariables) {
   return StyleSheet.create({
-    textTiny: {
-      fontSize: FontSize.tiny,
-      color: Colors.textGray400,
+    // colors
+    ...Object.entries(Colors).reduce(
+      (acc, [key, value]) => {
+        const key_ = firstLetterToUpperCase(key)
+        return ({
+          ...acc,
+          /* text color */
+          [`color${key_}`]: {
+            color: value,
+          },
+        })
+      },
+      {},
+    ) as FontColorStyleOptions,
+
+    // Font Family
+    ...Object.entries(FontFamily).reduce(
+      (acc, [key, value]) => {
+        const key_ = firstLetterToUpperCase(key)
+        return ({
+          ...acc,
+          /* text color */
+          [`family${key_}`]: {
+            fontFamily: value,
+          },
+        })
+      },
+      {},
+    ) as FontFamilyStyleGutters,
+
+    // sizes
+    h1: {
+      fontSize: FontSize.h1,
+      fontWeight: 'bold',
+      fontFamily: FontFamily.bold,
+      color: Colors.black900,
     },
-    textSmall: {
-      fontSize: FontSize.small,
-      color: Colors.textGray400,
+    h2: {
+      fontSize: FontSize.h2,
+      fontWeight: 'bold',
+      fontFamily: FontFamily.bold,
+      color: Colors.black900,
     },
-    textRegular: {
-      fontSize: FontSize.regular,
-      color: Colors.textGray400,
+    h3: {
+      fontSize: FontSize.h3,
+      fontWeight: 'bold',
+      fontFamily: FontFamily.bold,
+      color: Colors.black900,
     },
-    textLarge: {
+    sizeLarge: {
       fontSize: FontSize.large,
-      color: Colors.textGray400,
+      fontFamily: FontFamily.regular,
+      color: Colors.black900,
+    },
+    sizeMedium: {
+      fontSize: FontSize.medium,
+      fontFamily: FontFamily.regular,
+      color: Colors.black900,
+    },
+    sizeRegular: {
+      fontSize: FontSize.regular,
+      fontFamily: FontFamily.regular,
+      color: Colors.black900,
+    },
+    sizeMediumSmall: {
+      fontSize: FontSize.mediumSmall,
+      fontFamily: FontFamily.regular,
+      color: Colors.black900,
+    },
+    sizeSmall: {
+      fontSize: FontSize.small,
+      fontFamily: FontFamily.regular,
+      color: Colors.black900,
+    },
+    sizeMediumTiny: {
+      fontSize: FontSize.mediumTiny,
+      fontFamily: FontFamily.regular,
+      color: Colors.black900,
+    },
+    sizeTiny: {
+      fontSize: FontSize.tiny,
+      fontFamily: FontFamily.regular,
+      color: Colors.black900,
+    },
+
+    // weights
+    weightNormal: {
+      fontWeight: 'normal',
+    },
+    weight100: {
+      fontWeight: '100',
+    },
+    weight200: {
+      fontWeight: '200',
+    },
+    weight300: {
+      fontWeight: '300',
+    },
+    weight400: {
+      fontWeight: '400',
+    },
+    weight500: {
+      fontWeight: '500',
+    },
+    weight600: {
+      fontWeight: '600',
+    },
+    weight700: {
+      fontWeight: '700',
+    },
+    weight800: {
+      fontWeight: '800',
+    },
+    weight900: {
+      fontWeight: '900',
+    },
+    weightBold: {
+      fontWeight: 'bold',
     },
     textBold: {
       fontWeight: 'bold',
     },
-    textUppercase: {
-      textTransform: 'uppercase',
-    },
-    titleSmall: {
-      fontSize: FontSize.small * 1.5,
-      fontWeight: 'bold',
-      color: Colors.textGray800,
-    },
-    titleRegular: {
-      fontSize: FontSize.regular * 2,
-      fontWeight: 'bold',
-      color: Colors.textGray800,
-    },
-    titleLarge: {
-      fontSize: FontSize.large * 2,
-      fontWeight: 'bold',
-      color: Colors.textGray800,
-    },
-    textCenter: {
+
+    // aligns
+    textAlignCenter: {
       textAlign: 'center',
     },
-    textJustify: {
+    textAlignJustify: {
       textAlign: 'justify',
     },
-    textLeft: {
+    textAlignLeft: {
       textAlign: 'left',
     },
-    textRight: {
+    textAlignRight: {
       textAlign: 'right',
     },
-    textError: {
-      color: Colors.error,
+    textAlignTop: {
+      textAlignVertical: 'top',
     },
-    textSuccess: {
-      color: Colors.success,
+    textAlignMiddle: {
+      textAlignVertical: 'center',
     },
-    textPrimary: {
-      color: Colors.primary,
+    textAlignBottom: {
+      textAlignVertical: 'bottom',
     },
-    textLight: {
-      color: Colors.textGray200,
+
+    // Text Transform
+    textTransformUppercase: {
+      textTransform: 'uppercase',
     },
-    textLobster: {
-      fontFamily: 'lobster',
-      fontWeight: 'normal',
+    textTransformLowercase: {
+      textTransform: 'lowercase',
     },
-  });
+    textTransformCapitalize: {
+      textTransform: 'capitalize',
+    },
+    textTransformNone: {
+      textTransform: 'none',
+    },
+
+    // decorations
+    textUnderline: {
+      textDecorationLine: 'underline',
+      textDecorationStyle: 'solid',
+      textDecorationColor: '#000',
+    },
+    textLineThrough: {
+      textDecorationLine: 'line-through',
+      textDecorationStyle: 'solid',
+      textDecorationColor: '#000',
+    },
+  })
 }
