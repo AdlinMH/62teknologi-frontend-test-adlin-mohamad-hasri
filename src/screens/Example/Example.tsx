@@ -8,6 +8,8 @@ import {
   Image,
   Alert,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Brand } from '../../components';
@@ -187,6 +189,8 @@ const Example = () => {
             {t('welcome:description')}
           </Text>
         </View>
+
+        <Icon name="rocket" size={30} color="#900" />
 
         <View
           style={[
