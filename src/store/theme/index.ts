@@ -35,7 +35,7 @@ export default slice.reducer;
 
 type DarkProps<T> = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  [K in keyof T]: K extends `${infer Prefix}_dark` ? K : never;
+  [K in keyof T]: K extends `${infer _Prefix}_dark` ? K : never;
 }[keyof T];
 
 type PropsWithoutDark<T> = Omit<T, DarkProps<T>>;

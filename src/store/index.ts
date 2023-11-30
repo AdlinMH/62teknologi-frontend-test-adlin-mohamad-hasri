@@ -13,7 +13,8 @@ import {
 } from 'redux-persist';
 import { MMKV } from 'react-native-mmkv';
 
-import { api } from '../services/api';
+import { api } from '@/apis/_base';
+
 import theme from './theme';
 
 const reducers = combineReducers({
@@ -40,7 +41,7 @@ export const reduxStorage: Storage = {
 const persistConfig = {
   key: 'root',
   storage: reduxStorage,
-  whitelist: ['theme', 'auth'],
+  whitelist: ['theme'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
@@ -50,7 +51,12 @@ const store = configureStore({
   middleware: getDefaultMiddleware => {
     const middlewares = getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        // Ignore these action types
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, 'apiMaps/executeQuery/fulfilled', 'apiDefault/executeMutation/pending', 'apiDefault/executeMutation/rejected'],
+        // Ignore these field paths in all actions
+        ignoredActionPaths: ['meta.arg.originalArgs.requestOptions.signal'],
+        // Ignore these paths in the state
+        // ignoredPaths: [''],
       },
     }).concat(api.middleware);
 

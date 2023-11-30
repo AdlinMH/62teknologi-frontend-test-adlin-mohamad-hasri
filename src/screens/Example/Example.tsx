@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   View, Text, TouchableOpacity,
 } from 'react-native'
@@ -8,8 +8,9 @@ import { useDispatch } from 'react-redux'
 import i18next from 'i18next'
 
 import { useTheme } from '@/hooks'
-import { Brand } from '@/components'
 import { ThemeState, changeTheme } from '@/store/theme'
+import { useLazyGetBusinessesSearchQuery } from '@/apis/businesses'
+import { Brand } from '@/components'
 
 function Dashboard() {
   const { t } = useTranslation(['example', 'welcome'])
@@ -20,6 +21,8 @@ function Dashboard() {
 
   const dispatch = useDispatch()
 
+  const [getBusinessesSearch, { data }] = useLazyGetBusinessesSearchQuery()
+
   const onChangeTheme = ({ theme, darkMode }: Partial<ThemeState>) => {
     dispatch(changeTheme({ theme, darkMode }))
   }
@@ -28,21 +31,23 @@ function Dashboard() {
     i18next.changeLanguage(lang)
   }
 
+  useEffect(() => {
+    console.tron('data', data)
+  }, [data])
+
   return (
     <SafeAreaView style={[Layout.fullHeight, Layout.fullWidth]}>
       {/* Brand Logo */}
       <View style={[Layout.fullHeight, Layout.fullWidth, Layout.positionAbsolute, Layout.justifyContentCenter, Layout.itemsCenter, { zIndex: -2 }]}>
-        <View style={[Layout.positionAbsolute, Layout.center, {
+        {/* <View style={[Layout.positionAbsolute, Layout.center, {
             height: 250,
             width: 250,
             backgroundColor: isDark ? '#000000' : '#DFDFDF',
             borderRadius: 140,
           },
         ]}
-        />
+        /> */}
         <View style={[Layout.positionAbsolute, Layout.center, {
-            height: 300,
-            width: 300,
             transform: [{ translateY: 40 }],
           },
         ]}
@@ -59,6 +64,7 @@ function Dashboard() {
           </Text>
           <Text style={[Fonts.textBold, Fonts.sizeRegular, Gutters.marginBottomRegular]}>
             {t('welcome:subtitle')}
+            ${data ? JSON.stringify(data) : '-'}
           </Text>
         </View>
 
@@ -69,6 +75,25 @@ function Dashboard() {
           >
             <Text style={[Common.button.title]}>
               Theme
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[Common.button.circle, Gutters.marginBottomRegular, { zIndex: 999 }]}
+            onPress={() => {
+              console.log('clicked')
+              getBusinessesSearch({})
+              .unwrap()
+              .then((res) => {
+                console.tron('re', res)
+              })
+              .catch((err) => {
+                console.tron('er', err)
+              })
+            }}
+          >
+            <Text style={[Common.button.title]}>
+              GET
             </Text>
           </TouchableOpacity>
 
