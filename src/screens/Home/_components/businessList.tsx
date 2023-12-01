@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import { ActivityIndicator, FlatList, View, Text } from 'react-native'
 
 import { useTheme } from '@/hooks'
@@ -8,6 +8,7 @@ import BusinessItem from './businessItem'
 import { Button } from '@rneui/themed'
 
 import { useGetBusinessesSearchQuery } from '@/apis/businesses'
+import BusinessListPagination from './businessListPagination'
 
 function BusinessList() {
   // theming/styling
@@ -27,48 +28,6 @@ function BusinessList() {
    * */
   const { isLoading, isFetching, data, error } = useGetBusinessesSearchQuery({ location: 'NYC', limit, offset })
   const { status: errStatus, data: errData } = (error || {}) as any
-
-  /**
-   * MEMOIZE OBJECTS
-   */
-  const isPrevAny = useMemo(() => {
-    const prevOffset = offset - limit
-    if (prevOffset < 0) {
-      return false
-    }
-    return true
-  }, [offset, limit])
-  
-  const isNextAny = useMemo(() => {
-    const nextOffset = offset + limit
-    if (nextOffset >= (data?.total || 0)) {
-      return false
-    }
-    return true
-  }, [offset, limit, data?.total])
-
-
-  /**
-   * EVENT CALLBACKS
-   */
-  const setToPrevPage = useCallback(() => {
-    setOffset((prev) => {
-      if (isPrevAny) {
-        return prev - limit
-      }
-      return prev
-    })
-  }, [isPrevAny, limit])
-
-  const setToNextPage = useCallback(() => {
-    setOffset((prev) => {
-      if (isNextAny) {
-        return prev + limit
-      }
-      return prev
-    })
-  }, [isNextAny, limit])
-
 
   /**
    * RENDER ITEMS
@@ -115,48 +74,12 @@ function BusinessList() {
       />
 
       {/* Pagination */}
-      <View style={[Layout.fullWidth, Layout.row, Layout.justifyContentBetween, Gutters.paddingHorizontalTiny, Gutters.paddingVerticalTiny, Layout.borderTopColorBlack200, { borderTopWidth: 1 }]}>
-        <Button
-          type="solid"
-          title="Prev"
-          icon={{
-            name: 'chevron-left',
-            type: 'feather',
-            size: 25,
-            color: 'black',
-          }}
-          size="sm"
-          onPress={() => {
-            setToPrevPage()
-          }}
-          titleStyle={[Fonts.colorBlack500, Fonts.sizeSmall]}
-          buttonStyle={[Layout.backgroundBlack100, Gutters.radiusHuge]}
-          disabledStyle={[Layout.opacity5]}
-          disabled={!isPrevAny}
-        />
-
-        <Button
-          type="solid"
-          title="Next"
-          icon={{
-            name: 'chevron-right',
-            type: 'feather',
-            size: 25,
-            color: 'black',
-          }}
-          size="sm"
-          iconPosition="right"
-          onPress={() => {
-            setToNextPage()
-            flatlistRef.current?.scrollToOffset({ animated: true, offset: 0 })
-          }}
-          titleStyle={[Fonts.colorBlack500, Fonts.sizeSmall]}
-          buttonStyle={[Layout.backgroundBlack100, Gutters.radiusHuge]}
-          disabledStyle={[Layout.opacity5]}
-          disabled={!isNextAny}
-        />
-      </View>
-      {/* </View> */}
+      <BusinessListPagination
+        offset={offset}
+        limit={limit}
+        total={data?.total || 0}
+        setOffset={setOffset}
+      />
     </View>
   )
 }
