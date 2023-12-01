@@ -1,16 +1,16 @@
-import { responsiveFontSize } from 'react-native-responsive-dimensions'
+import { responsiveScreenWidth } from 'react-native-responsive-dimensions'
 
 /*
  * Metrics Sizes
  */
 const none = 0
-const tiny = responsiveFontSize(7)
+const tiny = responsiveScreenWidth(2)
 const small = tiny * 2
 const regular = tiny * 3
 const large = regular * 2
 const huge = regular * 3
 
-const tinyMin = -responsiveFontSize(7)
+const tinyMin = -responsiveScreenWidth(2)
 const smallMin = -small
 const regularMin = -regular
 const largeMin = -large

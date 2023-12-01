@@ -5,7 +5,7 @@ import { BaseQueryFn } from '@reduxjs/toolkit/query/react'
 // import { changeUser } from '@/storeRe/user'
 // import { RootStoreState } from '@/store/_types'
 // import { useGlobalStore } from '@/storeZu/global'
-import { getSubset } from '@/utils/functions/object'
+// import { getSubset } from '@/utils/functions/object'
 
 // import { AuthPostRefreshTokenRes } from '../auth/_types'
 
@@ -93,7 +93,7 @@ const axiosBaseQuery = ({ baseUrl }: { baseUrl: string } = { baseUrl: '' }): Bas
       // }
 
       // return Error
-      return { error: getSubset(error, ['status', 'data']) }
+      return { error: { status: error?.status | 0, data: error?.data?.error } }
     }
   }
 )

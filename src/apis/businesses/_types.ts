@@ -1,6 +1,3 @@
-import { ApiResponse } from "../_base/_types"
-
-
 // GET: business get search
 export type BusinessesGetSearchReq = {
   location?: string
@@ -22,7 +19,7 @@ export type BusinessesGetSearchReq = {
   offset?: number
 }
 
-export type BusinessesGetSearchRes = ApiResponse<{
+export type BusinessesGetSearchRes = {
   businesses: BusinessesGetSearchRes_Business[]
   total: number
   region: {
@@ -31,7 +28,7 @@ export type BusinessesGetSearchRes = ApiResponse<{
       longitude: string
     }
   }
-}>
+}
 export type BusinessesGetSearchRes_Business = {
   id: string
   alias: string
