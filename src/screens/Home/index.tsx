@@ -1,11 +1,12 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import { Text, View, ActivityIndicator } from 'react-native'
 
 import { useTheme } from '@/hooks'
 import { BottomSheetCustom } from '@/components'
 import { useGetBusinessesSearchQuery } from '@/apis/businesses'
-import BusinessList from './_components/businessList'
 import { Button } from '@rneui/themed'
+
+import BusinessList from './_components/businessList'
 
 const LazyMapViewComponent = React.lazy(() => import('@/components/MapCustom'))
 
@@ -17,44 +18,10 @@ function Home() {
 
   const { isLoading, isFetching, data, error } = useGetBusinessesSearchQuery({ location: 'NYC', limit, offset })
   const { status: errStatus, data: errData } = (error || {}) as any
-  
-  const isPrevAny = useMemo(() => {
-    const prevOffset = offset - limit
-    if (prevOffset < 0) {
-      return false
-    }
-    return true
-  }, [offset, limit])
-  
-  const isNextAny = useMemo(() => {
-    const nextOffset = offset + limit
-    if (nextOffset >= (data?.total || 0)) {
-      return false
-    }
-    return true
-  }, [offset, limit, data?.total])
-
-  const setToPrevPage = useCallback(() => {
-    setOffset((prev) => {
-      if (isPrevAny) {
-        return prev - limit
-      }
-      return prev
-    })
-  }, [isPrevAny, limit])
-
-  const setToNextPage = useCallback(() => {
-    setOffset((prev) => {
-      if (isNextAny) {
-        return prev + limit
-      }
-      return prev
-    })
-  }, [isNextAny, limit])
 
   return (
     <View style={[Layout.fill, { backgroundColor: 'red' }]}>
-      {/* Map */}
+      {/* Map Component */}
       <LazyMapViewComponent />
 
       {/* Display Loading */}
@@ -67,10 +34,9 @@ function Home() {
       {/* Display List */}
       <BusinessList
         data={data}
-        isPrevAny={isPrevAny}
-        setToPrevPage={setToPrevPage}
-        isNextAny={isNextAny}
-        setToNextPage={setToNextPage}
+        limit={limit}
+        offset={offset}
+        setOffset={setOffset}
       />
 
       {/* Display Error */}

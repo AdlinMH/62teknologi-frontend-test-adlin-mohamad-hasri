@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useMemo, useRef } from 'react'
 import { FlatList } from 'react-native'
 
 import { useTheme } from '@/hooks'
@@ -10,16 +10,49 @@ import BusinessPrevNextButton from './businessPrevNextButton'
 
 interface Props {
   data: BusinessesGetSearchRes | undefined
-  isPrevAny: boolean
-  setToPrevPage(): void
-  isNextAny: boolean
-  setToNextPage(): void
+  limit: number
+  offset: number
+  setOffset: React.Dispatch<React.SetStateAction<number>>
 }
 
-function BusinessList({ data, isPrevAny, setToPrevPage, isNextAny, setToNextPage }: Props) {
+function BusinessList({ data, limit, offset, setOffset }: Props) {
   const { Layout } = useTheme()
 
   const flatlistRef = useRef<FlatList<BusinessesGetSearchRes_Business> | null>()
+
+  const isPrevAny = useMemo(() => {
+    const prevOffset = offset - limit
+    if (prevOffset < 0) {
+      return false
+    }
+    return true
+  }, [offset, limit])
+  
+  const isNextAny = useMemo(() => {
+    const nextOffset = offset + limit
+    if (nextOffset >= (data?.total || 0)) {
+      return false
+    }
+    return true
+  }, [offset, limit, data?.total])
+
+  const setToPrevPage = useCallback(() => {
+    setOffset((prev) => {
+      if (isPrevAny) {
+        return prev - limit
+      }
+      return prev
+    })
+  }, [isPrevAny, limit])
+
+  const setToNextPage = useCallback(() => {
+    setOffset((prev) => {
+      if (isNextAny) {
+        return prev + limit
+      }
+      return prev
+    })
+  }, [isNextAny, limit])
 
   const renderItem = useCallback(({ item }: { item: BusinessesGetSearchRes_Business }) => {
     return <BusinessItem item={item} />
