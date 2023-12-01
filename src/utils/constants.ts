@@ -1,6 +1,6 @@
 import { Colors } from '@/theme/variables'
 import { StatusBar } from 'react-native'
-import { responsiveHeight, responsiveWidth } from 'react-native-full-responsive'
+import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 
 export const historyStatus = {
   finished: {

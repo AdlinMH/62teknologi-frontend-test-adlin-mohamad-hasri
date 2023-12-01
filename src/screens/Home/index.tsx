@@ -27,7 +27,7 @@ function Home() {
   }, [data])
 
   return (
-    <View style={[Layout.fill]}>
+    <View style={[Layout.fill, { backgroundColor: 'red' }]}>
       <LazyMapViewComponent />
     </View>
   )
