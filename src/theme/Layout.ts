@@ -13,7 +13,7 @@ export default function ({ Colors }: ThemeVariables) {
           [`background${key_}`]: {
             backgroundColor: value,
           },
-          /* Backgrounds */
+          /* Border Colors */
           [`borderColor${key_}`]: {
             borderColor: value,
           },

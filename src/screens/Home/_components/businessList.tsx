@@ -1,25 +1,36 @@
-import React, { useCallback, useMemo, useRef } from 'react'
-import { FlatList } from 'react-native'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
+import { ActivityIndicator, FlatList, View, Text } from 'react-native'
 
 import { useTheme } from '@/hooks'
-import { BottomSheetCustom } from '@/components'
-import { BusinessesGetSearchRes, BusinessesGetSearchRes_Business } from '@/apis/businesses/_types'
+import { BusinessesGetSearchRes_Business } from '@/apis/businesses/_types'
 
 import BusinessItem from './businessItem'
-import BusinessPrevNextButton from './businessPrevNextButton'
+import { Button } from '@rneui/themed'
 
-interface Props {
-  data: BusinessesGetSearchRes | undefined
-  limit: number
-  offset: number
-  setOffset: React.Dispatch<React.SetStateAction<number>>
-}
+import { useGetBusinessesSearchQuery } from '@/apis/businesses'
 
-function BusinessList({ data, limit, offset, setOffset }: Props) {
-  const { Layout } = useTheme()
+function BusinessList() {
+  // theming/styling
+  const { Layout, Gutters, Fonts } = useTheme()
 
+  // flatlist ref
   const flatlistRef = useRef<FlatList<BusinessesGetSearchRes_Business> | null>()
 
+  /**
+   * LOCAL STATES
+   */
+  const [limit] = useState<number>(5) // return 5 data by default
+  const [offset, setOffset] = useState<number>(0) // 0 is page 1
+
+  /**
+   * API: get business search
+   * */
+  const { isLoading, isFetching, data, error } = useGetBusinessesSearchQuery({ location: 'NYC', limit, offset })
+  const { status: errStatus, data: errData } = (error || {}) as any
+
+  /**
+   * MEMOIZE OBJECTS
+   */
   const isPrevAny = useMemo(() => {
     const prevOffset = offset - limit
     if (prevOffset < 0) {
@@ -36,6 +47,10 @@ function BusinessList({ data, limit, offset, setOffset }: Props) {
     return true
   }, [offset, limit, data?.total])
 
+
+  /**
+   * EVENT CALLBACKS
+   */
   const setToPrevPage = useCallback(() => {
     setOffset((prev) => {
       if (isPrevAny) {
@@ -54,49 +69,90 @@ function BusinessList({ data, limit, offset, setOffset }: Props) {
     })
   }, [isNextAny, limit])
 
+
+  /**
+   * RENDER ITEMS
+   */
   const renderItem = useCallback(({ item }: { item: BusinessesGetSearchRes_Business }) => {
     return <BusinessItem item={item} />
   }, [])
 
+
+  /**
+   * VIEWS
+   */
   return (
-    <>
-      {data ? (
-        <BottomSheetCustom
-          isVisible={true}
-          withBackdrop={false}
-          panelStyle={[Layout.backgroundTransparent, { zIndex: 2 }]}
-        >
-          <FlatList
-            ref={(e) => { flatlistRef.current = e }}
-            data={data.businesses}
-            renderItem={renderItem}
-            keyExtractor={(item) => `business-${item.id}`}
-            showsHorizontalScrollIndicator={false}
-            horizontal
-            ListHeaderComponent={(
-              isPrevAny ? (
-                <BusinessPrevNextButton
-                  title={'Previous'}
-                  onPress={() => {
-                    setToPrevPage()
-                  }}
-                />
-              ) : null
-            )}
-            ListFooterComponent={(
-              isNextAny ? (
-                <BusinessPrevNextButton
-                  title={'Next'}
-                  onPress={() => {
-                    setToNextPage()
-                    flatlistRef.current?.scrollToOffset({ animated: true, offset: 0 }) }}
-                  />
-              ) : null
-            )}
-          />
-        </BottomSheetCustom>
-      ) : null}
-    </>
+    <View>
+      {/* Display Loading */}
+      {(isLoading || isFetching) && (
+        <View style={[Layout.fullHeight, Layout.fullWidth, Layout.positionAbsolute, Layout.center, Layout.backgroundWhite, Layout.opacity5, { zIndex: 10 }]}>
+          <ActivityIndicator size="large"/>
+        </View>
+      )}
+
+      {/* Display Error */}
+      {(errStatus !== undefined || errData !== undefined) && (
+        <View style={[Gutters.paddingSmall, Layout.center]}>
+          <Text style={[Fonts.colorError500]}>
+            {errStatus || ''} {errData?.description || 'No Connection Established'}
+          </Text>
+
+          <Button size="sm">
+            reload
+          </Button>
+        </View>
+      )}
+
+      {/* Display Lists */}
+      <FlatList
+        ref={(e) => { flatlistRef.current = e }}
+        data={data?.businesses || []}
+        renderItem={renderItem}
+        keyExtractor={(item) => `business-${item.id}`}
+        showsVerticalScrollIndicator={false}
+        ListFooterComponent={(
+          <View style={[Layout.fullWidth, Layout.row, Layout.justifyContentBetween, Gutters.paddingHorizontalTiny, Gutters.paddingVerticalSmall]}>
+            <Button
+              type="solid"
+              title="Prev"
+              icon={{
+                name: 'chevron-left',
+                type: 'feather',
+                size: 25,
+                color: 'black',
+              }}
+              onPress={() => {
+                setToPrevPage()
+              }}
+              titleStyle={[Fonts.colorBlack500]}
+              buttonStyle={[Layout.backgroundBlack100, Gutters.radiusHuge]}
+              disabledStyle={[Layout.opacity5]}
+              disabled={!isPrevAny}
+            />
+
+            <Button
+              type="solid"
+              title="Next"
+              icon={{
+                name: 'chevron-right',
+                type: 'feather',
+                size: 25,
+                color: 'black',
+              }}
+              iconPosition="right"
+              onPress={() => {
+                setToNextPage()
+                flatlistRef.current?.scrollToOffset({ animated: true, offset: 0 })
+              }}
+              titleStyle={[Fonts.colorBlack500]}
+              buttonStyle={[Layout.backgroundBlack100, Gutters.radiusHuge]}
+              disabledStyle={[Layout.opacity5]}
+              disabled={!isNextAny}
+            />
+          </View>
+        )}
+      />
+    </View>
   )
 }
 

@@ -12,7 +12,7 @@ const BusinessItem = ({ item }: { item: BusinessesGetSearchRes_Business }) =>{
   const { Layout, Gutters } = useTheme()
 
   return (
-    <Card containerStyle={[Gutters.radiusTiny, Gutters.marginHorizontalTiny, { width: responsiveWidth(80) }]}>
+    <Card containerStyle={[Gutters.radiusTiny, Gutters.marginHorizontalTiny]}>
       <View style={[Layout.row]}>
         <FastImage
           style={[
