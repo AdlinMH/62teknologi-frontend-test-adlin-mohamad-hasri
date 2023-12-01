@@ -82,7 +82,7 @@ function BusinessList() {
    * VIEWS
    */
   return (
-    <View>
+    <View style={[Layout.fullHeight]}>
       {/* Display Loading */}
       {(isLoading || isFetching) && (
         <View style={[Layout.fullHeight, Layout.fullWidth, Layout.positionAbsolute, Layout.center, Layout.backgroundWhite, Layout.opacity5, { zIndex: 10 }]}>
@@ -110,48 +110,53 @@ function BusinessList() {
         renderItem={renderItem}
         keyExtractor={(item) => `business-${item.id}`}
         showsVerticalScrollIndicator={false}
-        ListFooterComponent={(
-          <View style={[Layout.fullWidth, Layout.row, Layout.justifyContentBetween, Gutters.paddingHorizontalTiny, Gutters.paddingVerticalSmall]}>
-            <Button
-              type="solid"
-              title="Prev"
-              icon={{
-                name: 'chevron-left',
-                type: 'feather',
-                size: 25,
-                color: 'black',
-              }}
-              onPress={() => {
-                setToPrevPage()
-              }}
-              titleStyle={[Fonts.colorBlack500]}
-              buttonStyle={[Layout.backgroundBlack100, Gutters.radiusHuge]}
-              disabledStyle={[Layout.opacity5]}
-              disabled={!isPrevAny}
-            />
-
-            <Button
-              type="solid"
-              title="Next"
-              icon={{
-                name: 'chevron-right',
-                type: 'feather',
-                size: 25,
-                color: 'black',
-              }}
-              iconPosition="right"
-              onPress={() => {
-                setToNextPage()
-                flatlistRef.current?.scrollToOffset({ animated: true, offset: 0 })
-              }}
-              titleStyle={[Fonts.colorBlack500]}
-              buttonStyle={[Layout.backgroundBlack100, Gutters.radiusHuge]}
-              disabledStyle={[Layout.opacity5]}
-              disabled={!isNextAny}
-            />
-          </View>
-        )}
+        style={[Layout.fill]}
+        contentContainerStyle={[Gutters.marginTopSmallMin]}
       />
+
+      {/* Pagination */}
+      <View style={[Layout.fullWidth, Layout.row, Layout.justifyContentBetween, Gutters.paddingHorizontalTiny, Gutters.paddingVerticalTiny, Layout.borderTopColorBlack200, { borderTopWidth: 1 }]}>
+        <Button
+          type="solid"
+          title="Prev"
+          icon={{
+            name: 'chevron-left',
+            type: 'feather',
+            size: 25,
+            color: 'black',
+          }}
+          size="sm"
+          onPress={() => {
+            setToPrevPage()
+          }}
+          titleStyle={[Fonts.colorBlack500, Fonts.sizeSmall]}
+          buttonStyle={[Layout.backgroundBlack100, Gutters.radiusHuge]}
+          disabledStyle={[Layout.opacity5]}
+          disabled={!isPrevAny}
+        />
+
+        <Button
+          type="solid"
+          title="Next"
+          icon={{
+            name: 'chevron-right',
+            type: 'feather',
+            size: 25,
+            color: 'black',
+          }}
+          size="sm"
+          iconPosition="right"
+          onPress={() => {
+            setToNextPage()
+            flatlistRef.current?.scrollToOffset({ animated: true, offset: 0 })
+          }}
+          titleStyle={[Fonts.colorBlack500, Fonts.sizeSmall]}
+          buttonStyle={[Layout.backgroundBlack100, Gutters.radiusHuge]}
+          disabledStyle={[Layout.opacity5]}
+          disabled={!isNextAny}
+        />
+      </View>
+      {/* </View> */}
     </View>
   )
 }
