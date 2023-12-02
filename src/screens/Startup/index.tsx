@@ -28,7 +28,7 @@ const Startup = ({ navigation }: ApplicationScreenProps) => {
   return (
     <View style={[Layout.fill, Layout.colCenter]}>
       <Brand />
-      <ActivityIndicator size={'large'} style={[Gutters.largeVMargin]} />
+      <ActivityIndicator size={'large'} style={[Gutters.marginVerticalLarge]} />
     </View>
   );
 };

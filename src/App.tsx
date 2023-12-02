@@ -6,6 +6,9 @@ import { store, persistor } from './store';
 import ApplicationNavigator from './navigators/Application';
 import './translations';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { enableLatestRenderer } from 'react-native-maps';
+
+enableLatestRenderer()
 
 const App = () => {
   // setup sentry and reactotron config

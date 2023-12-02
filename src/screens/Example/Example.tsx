@@ -12,7 +12,7 @@ import { ThemeState, changeTheme } from '@/store/theme'
 import { useLazyGetBusinessesSearchQuery } from '@/apis/businesses'
 import { Brand } from '@/components'
 
-function Dashboard() {
+function Example() {
   const { t } = useTranslation(['example', 'welcome'])
 
   const {
@@ -113,4 +113,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard
+export default Example
