@@ -1,34 +1,28 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { View } from 'react-native'
+
 import { useTheme } from '@/hooks'
-import { useLazyGetBusinessesSearchQuery } from '@/apis/businesses'
+
+import BusinessList from './_components/businessList'
+import HomeBottomSheet from './_components/homeBottomSheet'
 
 const LazyMapViewComponent = React.lazy(() => import('@/components/MapCustom'))
 
 function Home() {
   const { Layout } = useTheme()
 
-  const [getBusinessesSearch, { data }] = useLazyGetBusinessesSearchQuery()
-
-  const onGetSearch = () => {
-    console.log('clicked')
-    getBusinessesSearch({ location: 'NYC' })
-    .unwrap()
-    .then((res) => {
-      console.tron('re', res)
-    })
-    .catch((err) => {
-      console.tron('er', err)
-    })
-  }
-
-  useEffect(() => {
-    console.tron('data', data)
-  }, [data])
-
   return (
     <View style={[Layout.fill]}>
+      {/* Map Component */}
       <LazyMapViewComponent />
+
+    <HomeBottomSheet
+      isVisible={true}
+      panelStyle={[Layout.backgroundWhite, Layout.fullHeight, { zIndex: 1 }]}
+    >
+      {/* Display List */}
+      <BusinessList />
+    </HomeBottomSheet>
     </View>
   )
 }

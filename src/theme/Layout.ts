@@ -13,9 +13,25 @@ export default function ({ Colors }: ThemeVariables) {
           [`background${key_}`]: {
             backgroundColor: value,
           },
-          /* Backgrounds */
+          /* Border Colors */
           [`borderColor${key_}`]: {
             borderColor: value,
+          },
+          /* Border Top Colors */
+          [`borderTopColor${key_}`]: {
+            borderTopColor: value,
+          },
+          /* Border Right Colors */
+          [`borderRightColor${key_}`]: {
+            borderRightColor: value,
+          },
+          /* Border Bottom Colors */
+          [`borderBottomColor${key_}`]: {
+            borderBottomColor: value,
+          },
+          /* Border Left Colors */
+          [`borderLeftColor${key_}`]: {
+            borderLeftColor: value,
           },
         })
       },

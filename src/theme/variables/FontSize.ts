@@ -1,20 +1,20 @@
-import { responsiveScale } from 'react-native-full-responsive'
+import { responsiveScreenFontSize } from 'react-native-responsive-dimensions'
 
 /**
  * FontSize
  */
 export const FontSize = {
-  h1: responsiveScale(48),
-  h2: responsiveScale(40),
-  h3: responsiveScale(32),
-  h4: responsiveScale(24),
-  large: responsiveScale(24),
-  medium: responsiveScale(19),
-  regular: responsiveScale(17),
-  mediumSmall: responsiveScale(15),
-  small: responsiveScale(14),
-  mediumTiny: responsiveScale(12.5),
-  tiny: responsiveScale(11),
+  h1: responsiveScreenFontSize(4),
+  h2: responsiveScreenFontSize(3.1),
+  h3: responsiveScreenFontSize(2.8),
+  h4: responsiveScreenFontSize(2.2),
+  large: responsiveScreenFontSize(3),
+  medium: responsiveScreenFontSize(2.7),
+  regular: responsiveScreenFontSize(2.5),
+  mediumSmall: responsiveScreenFontSize(2.3),
+  small: responsiveScreenFontSize(2),
+  mediumTiny: responsiveScreenFontSize(1.8),
+  tiny: responsiveScreenFontSize(1.5),
 }
 
 export default FontSize

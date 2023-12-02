@@ -105,7 +105,11 @@ type Gutters = {
  */
 type LayoutColorProps =
   | 'background'
-  | 'borderColor';
+  | 'borderColor'
+  | 'borderTopColor'
+  | 'borderRightColor'
+  | 'borderBottomColor'
+  | 'borderLeftColor';
 
 type LayoutColorPropKeys = `${LayoutColorProps}${PascalCase<keyof ThemeVariables['Colors']>}`;
 

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import { View } from 'react-native'
-import { responsiveHeight } from 'react-native-full-responsive'
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 
 import { useTheme } from '@/hooks'
@@ -25,7 +24,7 @@ function MapComponent() {
   }, [])
 
   return (
-    <View style={[Layout.fill]}>
+    <View style={[Layout.fill, { backgroundColor: 'blue' }]}>
       <MapView
         ref={mapRef}
         provider={PROVIDER_GOOGLE}
@@ -49,7 +48,7 @@ function MapComponent() {
         onPanDrag={(e) => {
           mapOnPanDrag?.(e)
         }}
-        style={[Layout.fill, { maxHeight: responsiveHeight(55) }]}
+        style={[Layout.fill]}
       >
         {/* <MapViewMarkersComponents /> */}
       </MapView>

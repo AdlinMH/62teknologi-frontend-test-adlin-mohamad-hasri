@@ -12,12 +12,17 @@ export interface ApiResponse<T = Record<string, any>> {
 }
 
 export interface ApiResponseError {
-  data?: any | null | Record<string, any> | any[]
+  data?: ApiResponseErrorData | null | Record<string, any> | any[]
   success?: boolean
   error?: Record<string, any> | null
   msg?: string
   status?: number
   status_text?: string
+}
+
+export interface ApiResponseErrorData {
+  code?: string
+  description?: string
 }
 
 export interface ApiResponsePaging {

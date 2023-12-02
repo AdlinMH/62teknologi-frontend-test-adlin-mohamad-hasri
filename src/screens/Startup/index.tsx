@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { ActivityIndicator, View } from 'react-native';
-import { useTheme } from '../../hooks';
-import { Brand } from '../../components';
-import { setDefaultTheme } from '../../store/theme';
-import { ApplicationScreenProps } from '../../../@types/navigation';
+
+import { useTheme } from '@/hooks';
+import { Brand } from '@/components';
+import { setDefaultTheme } from '@/store/theme';
+import { ApplicationScreenProps } from '@appTypes/navigation';
 
 const Startup = ({ navigation }: ApplicationScreenProps) => {
   const { Layout, Gutters } = useTheme();
@@ -26,9 +27,9 @@ const Startup = ({ navigation }: ApplicationScreenProps) => {
   }, []);
 
   return (
-    <View style={[Layout.fill, Layout.colCenter]}>
+    <View style={[Layout.fill, Layout.center]}>
       <Brand />
-      <ActivityIndicator size={'large'} style={[Gutters.marginVerticalLarge]} />
+      <ActivityIndicator size={'large'} style={[Gutters.marginVerticalTiny]} />
     </View>
   );
 };

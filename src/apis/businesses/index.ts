@@ -14,4 +14,7 @@ export const businessesApi = api.injectEndpoints({
   overrideExisting: true,
 })
 
-export const { useLazyGetBusinessesSearchQuery } = businessesApi
+export const {
+  useGetBusinessesSearchQuery,
+  useLazyGetBusinessesSearchQuery,
+} = businessesApi
