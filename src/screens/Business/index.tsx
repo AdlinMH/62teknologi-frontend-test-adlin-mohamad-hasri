@@ -8,7 +8,7 @@ import HomeBottomSheet from './_components/homeBottomSheet'
 
 const LazyMapViewComponent = React.lazy(() => import('@/components/MapCustom'))
 
-function Home() {
+function BusinessScreen() {
   const { Layout } = useTheme()
 
   return (
@@ -27,4 +27,4 @@ function Home() {
   )
 }
 
-export default Home
+export default BusinessScreen

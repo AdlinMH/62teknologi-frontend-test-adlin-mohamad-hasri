@@ -1,2 +1,2 @@
 export { default as Startup } from './Startup';
-export { default as Example } from './Home';
+export { default as Business } from './Business';
