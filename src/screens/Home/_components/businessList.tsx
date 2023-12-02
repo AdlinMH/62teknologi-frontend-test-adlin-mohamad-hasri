@@ -24,11 +24,12 @@ function BusinessList() {
   const [limit] = useState<number>(5) // return 5 data by default
   const [offset, setOffset] = useState<number>(0) // 0 is page 1
   const [term, setTerm] = useState<string | undefined>()
+  const [selectedAttributes, setSelectedAttributes] = useState<string[]>([])
 
   /**
    * API: get business search
    * */
-  const { isLoading, isFetching, data, error } = useGetBusinessesSearchQuery({ location: 'NYC', limit, offset, term })
+  const { isLoading, isFetching, data, error } = useGetBusinessesSearchQuery({ location: 'NYC', limit, offset, term, attributes: selectedAttributes || [] })
   const { status: errStatus, data: errData } = (error || {}) as any
 
   /**
@@ -45,7 +46,12 @@ function BusinessList() {
   return (
     <View style={[Layout.fullHeight]}>
       {/* Search and Filter Panel */}
-      <BusinessSearchNFilterPanel term={term} setTerm={setTerm} />
+      <BusinessSearchNFilterPanel
+        term={term}
+        setTerm={setTerm}
+        selectedAttributes={selectedAttributes}
+        setSelectedAttributes={setSelectedAttributes}
+      />
 
       <View style={[Layout.fill, Layout.positionRelative]}>
         {/* Display Lists */}

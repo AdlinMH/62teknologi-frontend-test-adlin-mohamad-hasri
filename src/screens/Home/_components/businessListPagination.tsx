@@ -62,7 +62,7 @@ function BusinessListPagination({ offset, limit, total, setOffset }: Props) {
    * VIEWS
    */
   return (
-    <View style={[Layout.fullWidth, Layout.row, Layout.justifyContentBetween, Gutters.paddingHorizontalTiny, Gutters.paddingVerticalTiny, Layout.borderTopColorBlack200, { borderTopWidth: 1 }]}>
+    <View style={[Layout.fullWidth, Layout.row, Layout.justifyContentBetween, Gutters.paddingHorizontalSmall, Gutters.paddingVerticalSmall, Layout.borderTopColorBlack200, { borderTopWidth: 1 }]}>
       <Button
         type="solid"
         title="Prev"
