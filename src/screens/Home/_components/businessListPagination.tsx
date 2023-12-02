@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 
 import { useTheme } from '@/hooks'
 
@@ -62,7 +62,7 @@ function BusinessListPagination({ offset, limit, total, setOffset }: Props) {
    * VIEWS
    */
   return (
-    <View style={[Layout.fullWidth, Layout.row, Layout.justifyContentBetween, Gutters.paddingHorizontalSmall, Gutters.paddingVerticalSmall, Layout.borderTopColorBlack200, { borderTopWidth: 1 }]}>
+    <View style={[Layout.fullWidth, Layout.rowHCenter, Layout.justifyContentBetween, Gutters.paddingHorizontalSmall, Gutters.paddingVerticalSmall, Layout.borderTopColorBlack200, { borderTopWidth: 1 }]}>
       <Button
         type="solid"
         title="Prev"
@@ -81,6 +81,8 @@ function BusinessListPagination({ offset, limit, total, setOffset }: Props) {
         disabledStyle={[Layout.opacity5]}
         disabled={!isPrevAny}
       />
+
+      <Text style={[Fonts.colorBlack400]}>Page {(offset / limit) + 1}</Text>
 
       <Button
         type="solid"
