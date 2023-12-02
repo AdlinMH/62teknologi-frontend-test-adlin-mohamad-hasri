@@ -7,6 +7,7 @@ import { BusinessesGetSearchRes_Business } from '@/apis/businesses/_types'
 import BusinessItem from './businessItem'
 import { Button } from '@rneui/themed'
 
+import BusinessSearchNFilterPanel from './businessSearchNFilterPanel'
 import { useGetBusinessesSearchQuery } from '@/apis/businesses'
 import BusinessListPagination from './businessListPagination'
 
@@ -22,11 +23,12 @@ function BusinessList() {
    */
   const [limit] = useState<number>(5) // return 5 data by default
   const [offset, setOffset] = useState<number>(0) // 0 is page 1
+  const [term, setTerm] = useState<string | undefined>()
 
   /**
    * API: get business search
    * */
-  const { isLoading, isFetching, data, error } = useGetBusinessesSearchQuery({ location: 'NYC', limit, offset })
+  const { isLoading, isFetching, data, error } = useGetBusinessesSearchQuery({ location: 'NYC', limit, offset, term })
   const { status: errStatus, data: errData } = (error || {}) as any
 
   /**
@@ -42,44 +44,50 @@ function BusinessList() {
    */
   return (
     <View style={[Layout.fullHeight]}>
-      {/* Display Loading */}
-      {(isLoading || isFetching) && (
-        <View style={[Layout.fullHeight, Layout.fullWidth, Layout.positionAbsolute, Layout.center, Layout.backgroundWhite, Layout.opacity5, { zIndex: 10 }]}>
-          <ActivityIndicator size="large"/>
-        </View>
-      )}
+      {/* Search and Filter Panel */}
+      <BusinessSearchNFilterPanel term={term} setTerm={setTerm} />
 
-      {/* Display Error */}
-      {(errStatus !== undefined || errData !== undefined) && (
-        <View style={[Gutters.paddingSmall, Layout.center]}>
-          <Text style={[Fonts.colorError500]}>
-            {errStatus || ''} {errData?.description || 'No Connection Established'}
-          </Text>
+      <View style={[Layout.fill, Layout.positionRelative]}>
+        {/* Display Lists */}
+        <FlatList
+          ref={(e) => { flatlistRef.current = e }}
+          data={data?.businesses || []}
+          renderItem={renderItem}
+          keyExtractor={(item) => `business-${item.id}`}
+          showsVerticalScrollIndicator={false}
+          style={[Layout.fill]}
+          contentContainerStyle={[Gutters.marginTopSmallMin]}
+        />
 
-          <Button size="sm">
-            reload
-          </Button>
-        </View>
-      )}
+        {/* Pagination */}
+        <BusinessListPagination
+          offset={offset}
+          limit={limit}
+          total={data?.total || 0}
+          setOffset={setOffset}
+        />
 
-      {/* Display Lists */}
-      <FlatList
-        ref={(e) => { flatlistRef.current = e }}
-        data={data?.businesses || []}
-        renderItem={renderItem}
-        keyExtractor={(item) => `business-${item.id}`}
-        showsVerticalScrollIndicator={false}
-        style={[Layout.fill]}
-        contentContainerStyle={[Gutters.marginTopSmallMin]}
-      />
+        {/* Display Loading */}
+        {(isLoading || isFetching) && (
+          <View style={[Layout.fullHeight, Layout.fullWidth, Layout.positionAbsolute, Layout.center, Layout.backgroundWhite, Layout.opacity5, { zIndex: 10 }]}>
+            <ActivityIndicator size="large"/>
+          </View>
+        )}
 
-      {/* Pagination */}
-      <BusinessListPagination
-        offset={offset}
-        limit={limit}
-        total={data?.total || 0}
-        setOffset={setOffset}
-      />
+        {/* Display Error */}
+        {(errStatus !== undefined || errData !== undefined) && (
+          <View style={[Gutters.paddingSmall, Layout.center]}>
+            <Text style={[Fonts.colorError500]}>
+              {errStatus || ''} {errData?.description || 'No Connection Established'}
+            </Text>
+
+            <Button size="sm">
+              reload
+            </Button>
+          </View>
+        )}
+      </View>
+
     </View>
   )
 }
