@@ -1,10 +1,16 @@
 import React from 'react'
 import { View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { createStackNavigator } from '@react-navigation/stack'
 
 import { useTheme } from '@/hooks'
 
-import BusinessList from './_components/businessList'
 import HomeBottomSheet from './_components/homeBottomSheet'
+
+import BusinessList from './BusinessList'
+import BusinessDetail from './BusinessDetail'
+
+const Stack = createStackNavigator()
 
 const LazyMapViewComponent = React.lazy(() => import('@/components/MapCustom'))
 
@@ -16,13 +22,17 @@ function BusinessScreen() {
       {/* Map Component */}
       <LazyMapViewComponent />
 
-    <HomeBottomSheet
-      isVisible={true}
-      panelStyle={[Layout.backgroundWhite, Layout.fullHeight, { zIndex: 1 }]}
-    >
-      {/* Display List */}
-      <BusinessList />
-    </HomeBottomSheet>
+      <HomeBottomSheet
+        isVisible={true}
+        panelStyle={[Layout.fullHeight, { zIndex: 1 }]}
+      >
+        <SafeAreaView style={[Layout.fullHeight]}>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="BusinessList" component={BusinessList} />
+            <Stack.Screen name="BusinessDetail" component={BusinessDetail} />
+          </Stack.Navigator>
+        </SafeAreaView>
+      </HomeBottomSheet>
     </View>
   )
 }

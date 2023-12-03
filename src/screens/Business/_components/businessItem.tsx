@@ -1,10 +1,11 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Pressable, Text, View } from 'react-native'
 import { responsiveWidth } from 'react-native-responsive-dimensions'
 import FastImage from 'react-native-fast-image'
 import { Card } from '@rneui/themed'
 
 import { useTheme } from '@/hooks'
+import { navigate } from '@/navigators/utils'
 import { BusinessesGetSearchRes_Business } from '@/apis/businesses/_types'
 
 
@@ -13,7 +14,8 @@ const BusinessItem = ({ item }: { item: BusinessesGetSearchRes_Business }) =>{
 
   return (
     <Card containerStyle={[Gutters.radiusTiny, Gutters.marginHorizontalTiny]}>
-      <View style={[Layout.row]}>
+      <Pressable style={[Layout.row]} onPress={() => { navigate('BusinessDetail') }}>
+        {/* left side - image content */}
         <FastImage
           style={[
             Gutters.radiusTiny, Gutters.marginRightTiny,
@@ -25,16 +27,16 @@ const BusinessItem = ({ item }: { item: BusinessesGetSearchRes_Business }) =>{
           }}
           resizeMode={FastImage.resizeMode.cover}
         />
-        <View >
+
+        {/* right side - info content */}
+        <View>
           <Card.Title>{item.name}</Card.Title>
           <Card.Divider />
           <View>
-            <Text>
-              {item.name}
-            </Text>
+            <Text>{item.name}</Text>
           </View>
         </View>
-      </View>
+      </Pressable>
     </Card>
 )};
 

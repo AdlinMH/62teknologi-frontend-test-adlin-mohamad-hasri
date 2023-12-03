@@ -1,15 +1,14 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { ActivityIndicator, FlatList, View, Text } from 'react-native'
-
-import { useTheme } from '@/hooks'
-import { BusinessesGetSearchRes_Business } from '@/apis/businesses/_types'
-
-import BusinessItem from './businessItem'
 import { Button } from '@rneui/themed'
 
-import BusinessSearchNFilterPanel from './businessSearchNFilterPanel'
+import { useTheme } from '@/hooks'
 import { useGetBusinessesSearchQuery } from '@/apis/businesses'
-import BusinessListPagination from './businessListPagination'
+import { BusinessesGetSearchRes_Business } from '@/apis/businesses/_types'
+
+import BusinessItem from '../_components/businessItem'
+import BusinessListPagination from '../_components/businessListPagination'
+import BusinessSearchNFilterPanel from '../_components/businessSearchNFilterPanel'
 
 function BusinessList() {
   // theming/styling
@@ -93,7 +92,6 @@ function BusinessList() {
           </View>
         )}
       </View>
-
     </View>
   )
 }
