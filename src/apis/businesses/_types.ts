@@ -1,4 +1,6 @@
-// GET: business get search
+/**
+ * GET: business get search
+ * */
 export type BusinessesGetSearchReq = {
   location?: string
   latitude?: number
@@ -18,9 +20,8 @@ export type BusinessesGetSearchReq = {
   limit?: number
   offset?: number
 }
-
 export type BusinessesGetSearchRes = {
-  businesses: BusinessesGetSearchRes_Business[]
+  businesses: Business[]
   total: number
   region: {
     center: {
@@ -29,7 +30,23 @@ export type BusinessesGetSearchRes = {
     }
   }
 }
-export type BusinessesGetSearchRes_Business = {
+
+
+
+/**
+ * GET: business get detail
+ * */
+export type BusinessesGetDetailParams = {
+  business_id_or_alias: number | undefined
+}
+export type BusinessesGetDetailRes = Omit<Business, 'distance' | 'attributes'> & {
+  is_claimed: boolean
+  photos: string[]
+}
+
+
+/******* HELPERS /*******/
+export type Business = {
   id: string
   alias: string
   name: string
@@ -37,27 +54,27 @@ export type BusinessesGetSearchRes_Business = {
   is_closed?: boolean
   url?: string
   review_count?: number
-  categories?: BusinessesGetSearchRes_Business_Category[]
-  rating?: string
-  coordinates?: BusinessesGetSearchRes_Business_Coordinate
+  categories?: Business_Category[]
+  rating?: number
+  coordinates?: Business_Coordinate
   transactions?: string[]
   price?: string
-  location: BusinessesGetSearchRes_Business_Location
+  location: Business_Location
   phone: string
   display_phone: string
   distance?: string
-  hours?: BusinessesGetSearchRes_Business_Hour[]
+  hours?: Business_Hour[]
   attributes?: ('liked_by_vegetarians' | 'liked_by_vegans' | 'hot_and_new')[]
 }
-export type BusinessesGetSearchRes_Business_Category = {
+export type Business_Category = {
   alias: string
   title: string
 }
-export type BusinessesGetSearchRes_Business_Coordinate = {
+export type Business_Coordinate = {
   latitude: string
   longitude: string
 }
-export type BusinessesGetSearchRes_Business_Location = {
+export type Business_Location = {
   address1: string
   address2: string
   address3: string
@@ -68,12 +85,12 @@ export type BusinessesGetSearchRes_Business_Location = {
   display_address: string[]
   cross_streets: string | null
 }
-export type BusinessesGetSearchRes_Business_Hour = {
+export type Business_Hour = {
   hour_type: string
-  open: BusinessesGetSearchRes_Business_Hour_Open[]
+  open: Business_Hour_Open[]
   is_open_now: boolean
 }
-export type BusinessesGetSearchRes_Business_Hour_Open = {
+export type Business_Hour_Open = {
   day: number
   start: string
   end: string

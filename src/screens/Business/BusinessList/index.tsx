@@ -4,7 +4,7 @@ import { Button } from '@rneui/themed'
 
 import { useTheme } from '@/hooks'
 import { useGetBusinessesSearchQuery } from '@/apis/businesses'
-import { BusinessesGetSearchRes_Business } from '@/apis/businesses/_types'
+import { Business } from '@/apis/businesses/_types'
 
 import BusinessItem from '../_components/businessItem'
 import BusinessListPagination from '../_components/businessListPagination'
@@ -15,7 +15,7 @@ function BusinessList() {
   const { Layout, Gutters, Fonts } = useTheme()
 
   // flatlist ref
-  const flatlistRef = useRef<FlatList<BusinessesGetSearchRes_Business> | null>()
+  const flatlistRef = useRef<FlatList<Business> | null>()
 
   /**
    * LOCAL STATES
@@ -28,13 +28,13 @@ function BusinessList() {
   /**
    * API: get business search
    * */
-  const { isLoading, isFetching, data, error } = useGetBusinessesSearchQuery({ location: 'NYC', limit, offset, term, attributes: selectedAttributes || [] })
+  const { isLoading, isFetching, data, error, refetch } = useGetBusinessesSearchQuery({ location: 'NYC', limit, offset, term, attributes: selectedAttributes || [] })
   const { status: errStatus, data: errData } = (error || {}) as any
 
   /**
    * RENDER ITEMS
    */
-  const renderItem = useCallback(({ item }: { item: BusinessesGetSearchRes_Business }) => {
+  const renderItem = useCallback(({ item }: { item: Business }) => {
     return <BusinessItem item={item} />
   }, [])
 
@@ -82,11 +82,11 @@ function BusinessList() {
         {/* Display Error */}
         {(errStatus !== undefined || errData !== undefined) && (
           <View style={[Gutters.paddingSmall, Layout.center]}>
-            <Text style={[Fonts.colorError500]}>
+            <Text style={[Fonts.colorError500, Gutters.marginBottomRegular]}>
               {errStatus || ''} {errData?.description || 'No Connection Established'}
             </Text>
 
-            <Button size="sm">
+            <Button size="sm" onPress={() => { refetch() }}>
               reload
             </Button>
           </View>

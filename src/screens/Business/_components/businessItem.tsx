@@ -6,15 +6,15 @@ import { Card } from '@rneui/themed'
 
 import { useTheme } from '@/hooks'
 import { navigate } from '@/navigators/utils'
-import { BusinessesGetSearchRes_Business } from '@/apis/businesses/_types'
+import { Business } from '@/apis/businesses/_types'
 
 
-const BusinessItem = ({ item }: { item: BusinessesGetSearchRes_Business }) =>{
+const BusinessItem = ({ item }: { item: Business }) =>{
   const { Layout, Gutters } = useTheme()
 
   return (
     <Card containerStyle={[Gutters.radiusTiny, Gutters.marginHorizontalTiny]}>
-      <Pressable style={[Layout.row]} onPress={() => { navigate('BusinessDetail') }}>
+      <Pressable style={[Layout.row]} onPress={() => { navigate('BusinessDetail', { business_id_or_alias: item.id }) }}>
         {/* left side - image content */}
         <FastImage
           style={[

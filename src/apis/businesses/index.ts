@@ -1,5 +1,5 @@
 import { api } from '../_base'
-import { BusinessesGetSearchReq, BusinessesGetSearchRes } from './_types'
+import { BusinessesGetDetailParams, BusinessesGetDetailRes, BusinessesGetSearchReq, BusinessesGetSearchRes } from './_types'
 
 export const businessesApi = api.injectEndpoints({
   endpoints: (build) => ({
@@ -10,11 +10,17 @@ export const businessesApi = api.injectEndpoints({
         params,
       }),
     }),
+    getBusinessesDetail: build.query<BusinessesGetDetailRes, BusinessesGetDetailParams>({
+      query: (params) => ({
+        url: `/v3/businesses/${params.business_id_or_alias}`,
+        method: 'GET',
+      }),
+    }),
   }),
   overrideExisting: true,
 })
 
 export const {
   useGetBusinessesSearchQuery,
-  useLazyGetBusinessesSearchQuery,
+  useGetBusinessesDetailQuery,
 } = businessesApi
