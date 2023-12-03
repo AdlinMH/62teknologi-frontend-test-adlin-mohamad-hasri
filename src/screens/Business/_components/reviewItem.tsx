@@ -22,11 +22,11 @@ function BusinessDetailReviewItem({ item }: Props) {
     <View style={[Gutters.paddingBottomTiny, Gutters.marginBottomSmall, Layout.borderBottomColorBlack200, { borderBottomWidth: 1 }]}>
       {/* profile */}
       <View style={[Layout.row]}>
-        <Avatar size={48} rounded source={{ uri: item.user.image_url || undefined }} />
+        <Avatar size={48} rounded source={{ uri: item.user.image_url || 'https://beforeigosolutions.com/wp-content/uploads/2021/12/dummy-profile-pic-300x300-1.png' }} />
         <View style={[Layout.justifyContentCenter, Layout.fill, Gutters.leftTiny]}>
           <Text>{item.user.name}</Text>
           <View style={[Layout.rowHCenter, Layout.justifyContentBetween, { width: '95%' }]}>
-            <View style={[Layout.rowHCenter, { }]}>
+            <View style={[Layout.rowHCenter]}>
               <AirbnbRating showRating={false} defaultRating={item.rating} size={15} isDisabled />
               <Text style={[Fonts.sizeRegular, Fonts.colorWarning500, Fonts.familyMedium, Gutters.leftTiny]}>{item?.rating?.toFixed(1)}</Text>
             </View>

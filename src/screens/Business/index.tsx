@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 import { responsiveScreenHeight } from 'react-native-responsive-dimensions'
 import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -40,10 +40,10 @@ function BusinessScreen() {
       {/* Custom BottomSheet */}
       <HomeBottomSheet
         collapsed={currScreenIsDetail}
-        collapsedHeight={businessDetailPanelHeight}
+        collapsedHeight={businessDetailPanelHeight - (Platform.OS === 'android' ? responsiveScreenHeight(5) : 0)}
         panelStyle={[Layout.fullHeight, { zIndex: 1 }]}
       >
-        <SafeAreaView style={[currScreenIsDetail ? { height: businessDetailPanelHeight } : Layout.fullHeight, Layout.borderColorBlack300, Layout.borderWidth0_5, Common.buttonShadow]} edges={currScreenIsDetail ? [] : ['top', 'bottom']}>
+        <SafeAreaView style={[currScreenIsDetail ? { height: businessDetailPanelHeight } : Layout.fullHeight, Layout.borderColorBlack300, Layout.borderWidth0_5, Common.buttonShadow]} edges={currScreenIsDetail ? [] : ['top']}>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="BusinessList" component={BusinessList} />
             <Stack.Screen name="BusinessDetail" component={BusinessDetail} options={{

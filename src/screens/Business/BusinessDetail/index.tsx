@@ -5,8 +5,8 @@ import { SliderBox } from 'react-native-image-slider-box'
 import { Route } from '@react-navigation/native'
 import FastImage from 'react-native-fast-image'
 import Toast from 'react-native-toast-message'
-import { Chip } from '@rneui/themed'
-import { Button } from '@rneui/themed'
+import { MapMarker } from 'react-native-maps'
+import { Button, Chip } from '@rneui/themed'
 
 import { useTheme } from '@/hooks'
 import { Colors } from '@/theme/variables'
@@ -18,7 +18,6 @@ import { useMapViewStore } from '@/components/MapCustom/_store/mapViewStore'
 
 import BusinessDetailReviewList from '../_components/reviewList'
 import RatingDisplay from '../_components/ratingDisplay'
-import { MapMarker } from 'react-native-maps'
 
 interface Props {
   business_id_or_alias: number
@@ -41,6 +40,10 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
   const { isLoading, isFetching, data, error, refetch } = useGetBusinessesDetailQuery({ business_id_or_alias })
   const { status: errStatus, data: errData } = (error || {}) as any
 
+
+  /**
+   * USE EFFECTS
+   */
   useEffect(() => {
     if (coordinate?.latitude && coordinate.longitude) {
       useMapViewStore.setState({
@@ -72,6 +75,7 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
     <View style={[Layout.backgroundWhite, Layout.fill]}>
       {/* Content Header Container */}
       {data && (
+        <>
         <View style={[Layout.positionRelative]}>
           <LinearGradient colors={[Colors.black500, Colors.transparent]} style={[Layout.positionAbsolute, Layout.top0, Layout.fullWidth, Layout.opacity4, { zIndex: 20, height: 20 }]} />
           <SliderBox
@@ -101,9 +105,10 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
             </LinearGradient>
           </View>
         </View>
-      )}
 
-      <BusinessDetailReviewList business_id_or_alias={business_id_or_alias} />
+        <BusinessDetailReviewList business_id_or_alias={business_id_or_alias} />
+        </>
+      )}
 
      {/* Body */}
       <View style={[Gutters.paddingHorizontalSmall]}>
