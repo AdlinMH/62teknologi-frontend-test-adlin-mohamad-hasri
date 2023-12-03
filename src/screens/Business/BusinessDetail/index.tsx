@@ -1,11 +1,14 @@
 import React from 'react'
 import { View, Text, ActivityIndicator } from 'react-native'
+import { SliderBox } from 'react-native-image-slider-box'
+import FastImage from 'react-native-fast-image'
 import { Route } from '@react-navigation/native'
-import { Button, Header } from '@rneui/themed'
+import { Button } from '@rneui/themed'
 
 import { useTheme } from '@/hooks'
-import { navigateBack } from '@/navigators/utils'
 import { useGetBusinessesDetailQuery } from '@/apis/businesses'
+import {LinearGradient} from 'react-native-linear-gradient'
+import { Colors } from '@/theme/variables'
 
 interface Props {
   business_id_or_alias: number
@@ -34,29 +37,27 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
    */
   return (
     <View style={[Layout.backgroundWhite, Layout.fill]}>
-      {/* Header */}
-      <Header
-        leftComponent={{ icon: "arrow-left", type: "feather", onPress: () => { navigateBack() } }}
-        backgroundColor="white"
-        placement="center"
-        edges={[]}
-      />
+      {/* Content Header Container */}
+        {data && (
+          <View style={[Layout.positionRelative]}>
+            <SliderBox
+              ImageComponent={FastImage}
+              images={data?.photos}
+              autoplay
+              circleLoop
+            />
+            <View style={[Layout.positionAbsolute, Gutters.bottomNone, Layout.fullWidth]}>
+              <LinearGradient colors={[Colors.transparent, Colors.black400]} style={[Gutters.paddingSmall]}>
+              <Text style={[Fonts.h1, Fonts.colorWhite, Fonts.textBold]}>
+                {data?.name}
+              </Text>
+              </LinearGradient>
+            </View>
+          </View>
+        )}
 
      {/* Body */}
       <View style={[Gutters.paddingHorizontalSmall]}>
-        {data && (
-          <>
-            {/* Title */}
-            <Text style={[Fonts.h1, Fonts.colorBlack900, Fonts.textBold]}>
-              {data?.name}
-            </Text>
-
-            <Text style={[Fonts.sizeRegular, Fonts.colorBlack900]}>
-              {data?.display_phone}
-            </Text>
-          </>
-        )}
-
         {/* Display Loading */}
         {(isLoading || isFetching) && (
           <View style={[Layout.fullWidth, Layout.positionAbsolute, Layout.center, Gutters.paddingLarge, { zIndex: 10 }]}>
@@ -76,7 +77,6 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
             </Button>
           </View>
         )}
-
       </View>
     </View>
   )

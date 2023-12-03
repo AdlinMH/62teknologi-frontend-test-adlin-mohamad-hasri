@@ -37,7 +37,7 @@ const HomeBottomSheet = ({
       {/* content container */}
       <Animated.View style={[
         Layout.col, Layout.fullWidth, Layout.positionAbsolute, Layout.backgroundWhite,
-        Gutters.radiusTopLeftSmall, Gutters.radiusTopRightSmall,
+        Gutters.radiusTopLeftSmall, Gutters.radiusTopRightSmall, Layout.overflowHidden,
         {
           height: 'auto',
           zIndex: 9999,
