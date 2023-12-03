@@ -45,12 +45,11 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
             />
             <View style={[Layout.positionAbsolute, Gutters.bottomNone, Layout.fullWidth]}>
               <LinearGradient colors={[Colors.transparent, Colors.black400]} style={[Gutters.paddingSmall, Layout.col, Layout.itemsStart]}>
-                <Text style={[Fonts.h1, Fonts.colorWhite, Fonts.textBold]}>
+                <Text style={[Fonts.h1, Fonts.colorWhite, Fonts.textBold, Gutters.marginBottomTiny]}>
                   {data?.name}
                 </Text>
                 <View style={[Layout.fullWidth, Layout.row, Layout.justifyContentBetween]}>
                   <AirbnbRating showRating={false} size={15} onFinishRating={() => {
-                      console.tron('fffff')
                       Toast.show({
                         type: 'success',
                         text1: 'Thanks for the stars :)',
