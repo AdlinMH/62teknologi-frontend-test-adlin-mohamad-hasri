@@ -1,12 +1,16 @@
 import 'react-native-gesture-handler';
-import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
+import React, { useEffect } from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { PersistGate } from 'redux-persist/lib/integration/react';
+
+import ToastCustom from '@/components/ToastCustom'
+
 import { store, persistor } from './store';
 import ApplicationNavigator from './navigators/Application';
-import './translations';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { enableLatestRenderer } from 'react-native-maps';
+
+import './translations';
 
 enableLatestRenderer()
 
@@ -34,6 +38,8 @@ const App = () => {
         <PersistGate loading={null} persistor={persistor}>
           <ApplicationNavigator />
         </PersistGate>
+
+        <ToastCustom />
       </SafeAreaProvider>
     </Provider>
   )

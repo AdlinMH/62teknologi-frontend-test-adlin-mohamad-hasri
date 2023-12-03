@@ -1,6 +1,8 @@
 import React from 'react'
 import { View, Text, ActivityIndicator } from 'react-native'
+import { AirbnbRating, Chip } from '@rneui/themed'
 import { SliderBox } from 'react-native-image-slider-box'
+import Toast from 'react-native-toast-message'
 import FastImage from 'react-native-fast-image'
 import { Route } from '@react-navigation/native'
 import { Button } from '@rneui/themed'
@@ -18,13 +20,8 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
   // theming/styling
   const { Layout, Gutters, Fonts } = useTheme()
 
-  // cno
+  // params
   const { business_id_or_alias } = route?.params || {}
-
-  /**
-   * LOCAL STATES
-   */
-  // ......
 
   /**
    * API: get business detail
@@ -47,10 +44,25 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
               circleLoop
             />
             <View style={[Layout.positionAbsolute, Gutters.bottomNone, Layout.fullWidth]}>
-              <LinearGradient colors={[Colors.transparent, Colors.black400]} style={[Gutters.paddingSmall]}>
-              <Text style={[Fonts.h1, Fonts.colorWhite, Fonts.textBold]}>
-                {data?.name}
-              </Text>
+              <LinearGradient colors={[Colors.transparent, Colors.black400]} style={[Gutters.paddingSmall, Layout.col, Layout.itemsStart]}>
+                <Text style={[Fonts.h1, Fonts.colorWhite, Fonts.textBold]}>
+                  {data?.name}
+                </Text>
+                <View style={[Layout.fullWidth, Layout.row, Layout.justifyContentBetween]}>
+                  <AirbnbRating showRating={false} size={15} onFinishRating={() => {
+                      console.tron('fffff')
+                      Toast.show({
+                        type: 'success',
+                        text1: 'Thanks for the stars :)',
+                      })
+                    }} />
+                  <Chip
+                    title={data?.is_closed ? 'Closed' : 'Open'}
+                    color={data?.is_closed ? Colors.error500 : Colors.success600}
+                    buttonStyle={[{ paddingVertical: 4 }]} titleStyle={[Fonts.familySemiBold]}
+                  />
+                </View>
+                
               </LinearGradient>
             </View>
           </View>
