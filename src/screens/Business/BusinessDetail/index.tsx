@@ -64,6 +64,7 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
       {/* Content Header Container */}
         {data && (
           <View style={[Layout.positionRelative]}>
+            <LinearGradient colors={[Colors.black500, Colors.transparent]} style={[Layout.positionAbsolute, Layout.top0, Layout.fullWidth, Layout.opacity4, { zIndex: 20, height: 20 }]} />
             <SliderBox
               ImageComponent={FastImage}
               images={data?.photos}
@@ -88,7 +89,6 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
                     buttonStyle={[{ paddingVertical: 4 }]} titleStyle={[Fonts.familySemiBold]}
                   />
                 </View>
-                
               </LinearGradient>
             </View>
           </View>

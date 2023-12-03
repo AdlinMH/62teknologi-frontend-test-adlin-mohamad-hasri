@@ -21,7 +21,7 @@ const SCREEN_HEIGHT = responsiveHeight(100)
 const HomeBottomSheet = ({
   collapsed, collapsedHeight, panelStyle, containerStyle, children,
 } : CustomBottomSheetProps) => {
-  const { Layout, Gutters } = useTheme()
+  const { Layout } = useTheme()
 
   const panelBottomStyle = useAnimatedStyle(() => ({
     bottom: collapsed
@@ -37,7 +37,7 @@ const HomeBottomSheet = ({
       {/* content container */}
       <Animated.View style={[
         Layout.col, Layout.fullWidth, Layout.positionAbsolute, Layout.backgroundWhite,
-        Gutters.radiusTopLeftSmall, Gutters.radiusTopRightSmall, Layout.overflowHidden,
+        // Gutters.radiusTopLeftSmall, Gutters.radiusTopRightSmall, Layout.overflowHidden,
         {
           height: 'auto',
           zIndex: 9999,

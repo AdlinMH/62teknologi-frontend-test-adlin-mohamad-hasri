@@ -38,10 +38,10 @@ function BusinessScreen() {
       {/* Custom BottomSheet */}
       <HomeBottomSheet
         collapsed={currScreenIsDetail}
-        collapsedHeight={responsiveScreenHeight(68)}
+        collapsedHeight={responsiveScreenHeight(75)}
         panelStyle={[Layout.fullHeight, { zIndex: 1 }]}
       >
-        <SafeAreaView style={[Layout.fullHeight, Layout.borderColorBlack200, Layout.borderWidth0_5, Common.buttonShadow]} edges={currScreenIsDetail ? [] : ['top', 'bottom']}>
+        <SafeAreaView style={[Layout.fullHeight, Layout.borderColorBlack300, Layout.borderWidth0_5, Common.buttonShadow]} edges={currScreenIsDetail ? [] : ['top', 'bottom']}>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="BusinessList" component={BusinessList} />
             <Stack.Screen name="BusinessDetail" component={BusinessDetail} options={{
