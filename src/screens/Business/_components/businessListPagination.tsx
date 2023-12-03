@@ -76,7 +76,7 @@ function BusinessListPagination({ offset, limit, total, setOffset }: Props) {
         onPress={() => {
           setToPrevPage()
         }}
-        titleStyle={[Fonts.colorBlack500, Fonts.sizeSmall]}
+        titleStyle={[Fonts.colorBlack500, Fonts.sizeRegular, Gutters.paddingRightSmall]}
         buttonStyle={[Layout.backgroundBlack100, Gutters.radiusHuge]}
         disabledStyle={[Layout.opacity5]}
         disabled={!isPrevAny}
@@ -98,7 +98,7 @@ function BusinessListPagination({ offset, limit, total, setOffset }: Props) {
         onPress={() => {
           setToNextPage()
         }}
-        titleStyle={[Fonts.colorBlack500, Fonts.sizeSmall]}
+        titleStyle={[Fonts.colorBlack500, Fonts.sizeRegular, Gutters.paddingLeftSmall]}
         buttonStyle={[Layout.backgroundBlack100, Gutters.radiusHuge]}
         disabledStyle={[Layout.opacity5]}
         disabled={!isNextAny}
