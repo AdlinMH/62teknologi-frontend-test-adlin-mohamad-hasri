@@ -30,7 +30,9 @@ function BusinessDetailReviewItem({ item }: Props) {
               <AirbnbRating showRating={false} defaultRating={item.rating} size={15} isDisabled />
               <Text style={[Fonts.sizeRegular, Fonts.colorWarning500, Fonts.familyMedium, Gutters.leftTiny]}>{item?.rating?.toFixed(1)}</Text>
             </View>
-            <Text style={[Fonts.sizeSmall, Fonts.colorBlack500]}>{moment(item.time_created).fromNow()}</Text>
+            <Text style={[Fonts.sizeSmall, Fonts.colorBlack500]}>
+              {moment(item.time_created).fromNow()}
+            </Text>
           </View>
         </View>
       </View>

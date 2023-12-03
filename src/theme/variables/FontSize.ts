@@ -6,7 +6,7 @@ import { responsiveScreenFontSize } from 'react-native-responsive-dimensions'
 export const FontSize = {
   h1: responsiveScreenFontSize(3.4),
   h2: responsiveScreenFontSize(2.6),
-  h3: responsiveScreenFontSize(2),
+  h3: responsiveScreenFontSize(2.2),
   h4: responsiveScreenFontSize(1.5),
   large: responsiveScreenFontSize(2.8),
   medium: responsiveScreenFontSize(2.4),

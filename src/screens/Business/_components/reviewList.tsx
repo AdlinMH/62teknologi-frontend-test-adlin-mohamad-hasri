@@ -7,6 +7,7 @@ import { useGetBusinessesReviewQuery } from '@/apis/businesses'
 import { Business_Review } from '@/apis/businesses/_types'
 
 import BusinessListPagination from './businessListPagination'
+import RatingDisplay from './ratingDisplay'
 import ReviewItem from './reviewItem'
 
 interface Props {
@@ -47,7 +48,7 @@ function BusinessDetailReviewList({ business_id_or_alias }: Props) {
     <View style={[Layout.fill, Gutters.paddingSmall]}>
       {/* title */}
       <Text style={[Fonts.h2, Gutters.marginBottomSmall]}>
-        Reviews
+        Reviews <RatingDisplay item={{ review_count: data?.total }} size="md" />
       </Text>
 
       {/* Display Lists */}

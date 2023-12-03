@@ -5,7 +5,7 @@ import { SliderBox } from 'react-native-image-slider-box'
 import { Route } from '@react-navigation/native'
 import FastImage from 'react-native-fast-image'
 import Toast from 'react-native-toast-message'
-import { AirbnbRating, Chip } from '@rneui/themed'
+import { Chip } from '@rneui/themed'
 import { Button } from '@rneui/themed'
 
 import { useTheme } from '@/hooks'
@@ -16,6 +16,7 @@ import MapViewMarkersComponents from '@/components/MapCustom/_components/mapView
 import { useMapViewStore } from '@/components/MapCustom/_store/mapViewStore'
 import { animateToPoint } from '@/utils/functions/map'
 import BusinessDetailReviewList from '../_components/reviewList'
+import RatingDisplay from '../_components/ratingDisplay'
 
 interface Props {
   business_id_or_alias: number
@@ -73,17 +74,12 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
                 {data?.name}
               </Text>
               <View style={[Layout.fullWidth, Layout.row, Layout.justifyContentBetween]}>
-                <View style={[Layout.rowHCenter]}>
-                  <AirbnbRating showRating={false} defaultRating={data?.rating} size={15} onFinishRating={() => {
+                <RatingDisplay item={{ rating: data.rating }} size="md" onFinishRating={() => {
                     Toast.show({
                       type: 'success',
                       text1: 'Thanks for the stars :)',
                     })
-                  }} />
-                  <Text style={[Fonts.sizeMedium, Fonts.colorWarning400, Fonts.familyMedium, Gutters.leftTiny]}>
-                    {data?.rating?.toFixed(1)}
-                  </Text>
-                </View>
+                  }}  />
                 <Chip
                   title={data?.is_closed ? 'Closed' : 'Open'}
                   color={data?.is_closed ? Colors.error500 : Colors.success600}
