@@ -13,7 +13,6 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		13B154B9A4894049A023D750 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D817ADBAF416481C97EA0E62 /* Feather.ttf */; };
-		18F072C73E21776C1CCEDB6A /* libPods-YelpBusiness-YelpBusinessTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A946852C37D25861D1CA240 /* libPods-YelpBusiness-YelpBusinessTests.a */; };
 		1EFE6B7F8C8B40C09CEF82F1 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16F2F4D21417467D9F551F11 /* EvilIcons.ttf */; };
 		22C8C49E67434BE9B44F3041 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CCC241A3BA94B09B4460A3A /* Inter-SemiBold.ttf */; };
 		291AABD22EDE4BEB8EDC07AF /* Inter-ExtraLightItalic-BETA.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 146BD9612125436A9CBAAFFD /* Inter-ExtraLightItalic-BETA.ttf */; };
@@ -26,7 +25,6 @@
 		617F0D3A00B140F2AD5F1AAD /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30A397ACD5814981A8343194 /* Inter-ExtraBold.ttf */; };
 		6302317E6C60470B9ECEA82C /* Inter-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95647E5AB0D24A1D8C2C8A04 /* Inter-BoldItalic.ttf */; };
 		6E7141E2A44E41419FE80F29 /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F94FC7D9A4F94EBAA55F10D7 /* Inter-ExtraLight.ttf */; };
-		7329B68D5DDEA239C5917CF5 /* libPods-YelpBusiness.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B3DC6C13058DEB0921A666 /* libPods-YelpBusiness.a */; };
 		768283928C714F21BF7AB18D /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8F76BF0675C405FA03E5AEF /* Inter-Light.ttf */; };
 		78F1481581594B01AA03BD44 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7443CD12121F4A19984BA76F /* Inter-Regular.ttf */; };
 		7A29B5B0D66B4444913F7392 /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7A6C6397A434809B9FC6584 /* Inter-Black.ttf */; };
@@ -34,10 +32,12 @@
 		82209A08033B40329FE3F56B /* Inter-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 96EF3DE9F21943DDADF22AEF /* Inter-Italic.ttf */; };
 		86BD8FD687E44EC6A49205DD /* Inter-ThinItalic-BETA.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 775FCC3D3AE64243B58DA0EB /* Inter-ThinItalic-BETA.ttf */; };
 		96BAB8A2A5DE4448B6797C30 /* Inter-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A3035AC119F4903852A821B /* Inter-BlackItalic.ttf */; };
+		9BC984EB39A9EB5E7DE68CC1 /* libPods-YelpBusiness.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D08D94D12B1148BD91993541 /* libPods-YelpBusiness.a */; };
 		9ECBBCBE35E548D595EB36DD /* Inter-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B4E1290FE5624AACA31F1823 /* Inter-ExtraBoldItalic.ttf */; };
 		AE4989768C504DBC944CF540 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 103A980E035C4E0BA138B11E /* Octicons.ttf */; };
 		B2C9908E4DBB41A98635A312 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30976195C8884877A7DA7B1D /* AntDesign.ttf */; };
 		B64F1893DE8548E48C116EDF /* Inter-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3669A5AE15854D75A489B911 /* Inter-MediumItalic.ttf */; };
+		BEC51CA34A589D07AFF56E3F /* libPods-YelpBusiness-YelpBusinessTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C518E8E989D5D216965917C5 /* libPods-YelpBusiness-YelpBusinessTests.a */; };
 		BFB0075D30A34E97A4FE60DE /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0D2307D28DB4BAB97DBB7CC /* Ionicons.ttf */; };
 		C20A49D6BD8D4125B9C11F1C /* Inter-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F46E37E64AC4B048C2E67CB /* Inter-SemiBoldItalic.ttf */; };
 		DA4726322ADE4054A5168B59 /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63A3F159465F4335A07BCAD0 /* Inter-Thin.ttf */; };
@@ -62,8 +62,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* YelpBusinessTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YelpBusinessTests.m; sourceTree = "<group>"; };
 		0357C2238ED745798216375A /* Inter-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Medium.ttf"; path = "../src/Assets/fonts/Inter-Medium.ttf"; sourceTree = "<group>"; };
-		0397D155149EC9ED18B9FB96 /* Pods-YelpBusiness-YelpBusinessTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpBusiness-YelpBusinessTests.debug.xcconfig"; path = "Target Support Files/Pods-YelpBusiness-YelpBusinessTests/Pods-YelpBusiness-YelpBusinessTests.debug.xcconfig"; sourceTree = "<group>"; };
-		0A946852C37D25861D1CA240 /* libPods-YelpBusiness-YelpBusinessTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YelpBusiness-YelpBusinessTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0844001F7DAB2700F65C0CCF /* Pods-YelpBusiness-YelpBusinessTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpBusiness-YelpBusinessTests.debug.xcconfig"; path = "Target Support Files/Pods-YelpBusiness-YelpBusinessTests/Pods-YelpBusiness-YelpBusinessTests.debug.xcconfig"; sourceTree = "<group>"; };
 		103A980E035C4E0BA138B11E /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = ../src/Assets/fonts/Octicons.ttf; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* YelpBusiness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YelpBusiness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = YelpBusiness/AppDelegate.h; sourceTree = "<group>"; };
@@ -73,9 +72,10 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = YelpBusiness/main.m; sourceTree = "<group>"; };
 		146BD9612125436A9CBAAFFD /* Inter-ExtraLightItalic-BETA.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraLightItalic-BETA.ttf"; path = "../src/Assets/fonts/Inter-ExtraLightItalic-BETA.ttf"; sourceTree = "<group>"; };
 		16F2F4D21417467D9F551F11 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = ../src/Assets/fonts/EvilIcons.ttf; sourceTree = "<group>"; };
+		1E4E6E3E1EEC39A44FFB5F3A /* Pods-YelpBusiness.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpBusiness.debug.xcconfig"; path = "Target Support Files/Pods-YelpBusiness/Pods-YelpBusiness.debug.xcconfig"; sourceTree = "<group>"; };
 		1F46E37E64AC4B048C2E67CB /* Inter-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-SemiBoldItalic.ttf"; path = "../src/Assets/fonts/Inter-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		21D2707E6B7D41E795EE1EC0 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = ../src/Assets/fonts/Fontisto.ttf; sourceTree = "<group>"; };
-		24B3DC6C13058DEB0921A666 /* libPods-YelpBusiness.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YelpBusiness.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23C3DC00AAD0059E66EA5A88 /* Pods-YelpBusiness.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpBusiness.release.xcconfig"; path = "Target Support Files/Pods-YelpBusiness/Pods-YelpBusiness.release.xcconfig"; sourceTree = "<group>"; };
 		30976195C8884877A7DA7B1D /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = ../src/Assets/fonts/AntDesign.ttf; sourceTree = "<group>"; };
 		30A397ACD5814981A8343194 /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraBold.ttf"; path = "../src/Assets/fonts/Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
 		3669A5AE15854D75A489B911 /* Inter-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-MediumItalic.ttf"; path = "../src/Assets/fonts/Inter-MediumItalic.ttf"; sourceTree = "<group>"; };
@@ -83,11 +83,9 @@
 		4CCC241A3BA94B09B4460A3A /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-SemiBold.ttf"; path = "../src/Assets/fonts/Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		4CFD764F90194735A81825F6 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = ../src/Assets/fonts/SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		604305BAC05F4BD9B090C676 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = ../src/Assets/fonts/MaterialIcons.ttf; sourceTree = "<group>"; };
-		617388EDA1E56D13D75A01C4 /* Pods-YelpBusiness.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpBusiness.debug.xcconfig"; path = "Target Support Files/Pods-YelpBusiness/Pods-YelpBusiness.debug.xcconfig"; sourceTree = "<group>"; };
 		63A3F159465F4335A07BCAD0 /* Inter-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Thin.ttf"; path = "../src/Assets/fonts/Inter-Thin.ttf"; sourceTree = "<group>"; };
 		6CC02896506642A7858704AE /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = ../src/Assets/fonts/FontAwesome.ttf; sourceTree = "<group>"; };
 		70353BDD56344A56AD5771AA /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = ../src/Assets/fonts/Foundation.ttf; sourceTree = "<group>"; };
-		734DD4C628F268F4CCBCB214 /* Pods-YelpBusiness-YelpBusinessTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpBusiness-YelpBusinessTests.release.xcconfig"; path = "Target Support Files/Pods-YelpBusiness-YelpBusinessTests/Pods-YelpBusiness-YelpBusinessTests.release.xcconfig"; sourceTree = "<group>"; };
 		7443CD12121F4A19984BA76F /* Inter-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Regular.ttf"; path = "../src/Assets/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; };
 		775FCC3D3AE64243B58DA0EB /* Inter-ThinItalic-BETA.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ThinItalic-BETA.ttf"; path = "../src/Assets/fonts/Inter-ThinItalic-BETA.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = YelpBusiness/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -97,15 +95,17 @@
 		96EF3DE9F21943DDADF22AEF /* Inter-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Italic.ttf"; path = "../src/Assets/fonts/Inter-Italic.ttf"; sourceTree = "<group>"; };
 		A8F76BF0675C405FA03E5AEF /* Inter-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Light.ttf"; path = "../src/Assets/fonts/Inter-Light.ttf"; sourceTree = "<group>"; };
 		B4E1290FE5624AACA31F1823 /* Inter-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraBoldItalic.ttf"; path = "../src/Assets/fonts/Inter-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		C518E8E989D5D216965917C5 /* libPods-YelpBusiness-YelpBusinessTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YelpBusiness-YelpBusinessTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7A6C6397A434809B9FC6584 /* Inter-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Black.ttf"; path = "../src/Assets/fonts/Inter-Black.ttf"; sourceTree = "<group>"; };
+		D08D94D12B1148BD91993541 /* libPods-YelpBusiness.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YelpBusiness.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D817ADBAF416481C97EA0E62 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = ../src/Assets/fonts/Feather.ttf; sourceTree = "<group>"; };
+		DB7903B52B65996ED1DC33E9 /* Pods-YelpBusiness-YelpBusinessTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpBusiness-YelpBusinessTests.release.xcconfig"; path = "Target Support Files/Pods-YelpBusiness-YelpBusinessTests/Pods-YelpBusiness-YelpBusinessTests.release.xcconfig"; sourceTree = "<group>"; };
 		DFDE76E17EB14F5E85E0EEDA /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = ../src/Assets/fonts/Entypo.ttf; sourceTree = "<group>"; };
 		E0D2307D28DB4BAB97DBB7CC /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = ../src/Assets/fonts/Ionicons.ttf; sourceTree = "<group>"; };
 		E81EC654CD0049A4969B9D39 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = ../src/Assets/fonts/MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F19B62D788284EFC9A67875B /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = ../src/Assets/fonts/Zocial.ttf; sourceTree = "<group>"; };
 		F94FC7D9A4F94EBAA55F10D7 /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraLight.ttf"; path = "../src/Assets/fonts/Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
-		FFC4D0AAB8EC0AB6C015AC77 /* Pods-YelpBusiness.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpBusiness.release.xcconfig"; path = "Target Support Files/Pods-YelpBusiness/Pods-YelpBusiness.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18F072C73E21776C1CCEDB6A /* libPods-YelpBusiness-YelpBusinessTests.a in Frameworks */,
+				BEC51CA34A589D07AFF56E3F /* libPods-YelpBusiness-YelpBusinessTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,7 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7329B68D5DDEA239C5917CF5 /* libPods-YelpBusiness.a in Frameworks */,
+				9BC984EB39A9EB5E7DE68CC1 /* libPods-YelpBusiness.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,8 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				24B3DC6C13058DEB0921A666 /* libPods-YelpBusiness.a */,
-				0A946852C37D25861D1CA240 /* libPods-YelpBusiness-YelpBusinessTests.a */,
+				D08D94D12B1148BD91993541 /* libPods-YelpBusiness.a */,
+				C518E8E989D5D216965917C5 /* libPods-YelpBusiness-YelpBusinessTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -242,10 +242,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				617388EDA1E56D13D75A01C4 /* Pods-YelpBusiness.debug.xcconfig */,
-				FFC4D0AAB8EC0AB6C015AC77 /* Pods-YelpBusiness.release.xcconfig */,
-				0397D155149EC9ED18B9FB96 /* Pods-YelpBusiness-YelpBusinessTests.debug.xcconfig */,
-				734DD4C628F268F4CCBCB214 /* Pods-YelpBusiness-YelpBusinessTests.release.xcconfig */,
+				1E4E6E3E1EEC39A44FFB5F3A /* Pods-YelpBusiness.debug.xcconfig */,
+				23C3DC00AAD0059E66EA5A88 /* Pods-YelpBusiness.release.xcconfig */,
+				0844001F7DAB2700F65C0CCF /* Pods-YelpBusiness-YelpBusinessTests.debug.xcconfig */,
+				DB7903B52B65996ED1DC33E9 /* Pods-YelpBusiness-YelpBusinessTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -257,12 +257,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "YelpBusinessTests" */;
 			buildPhases = (
-				1F334DECD91191F591379E6E /* [CP] Check Pods Manifest.lock */,
+				4E6D9CC110725E1CEA590847 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				70E1B0726BC932BA80B7B18B /* [CP] Embed Pods Frameworks */,
-				DBDF30D9C9CC782FA4B2EB12 /* [CP] Copy Pods Resources */,
+				E26776A0C34670370949C877 /* [CP] Embed Pods Frameworks */,
+				DEBC8619076C30B8EC0EE49A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -278,14 +278,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "YelpBusiness" */;
 			buildPhases = (
-				E995B2F132803542AA5A20F7 /* [CP] Check Pods Manifest.lock */,
+				2B40FEA1953DD0233DC1768D /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				76898C9E4B715B513A8841EC /* [CP] Embed Pods Frameworks */,
-				09C1D051F7CFB294EE8C1308 /* [CP] Copy Pods Resources */,
+				9D26154C25657899401FD0D1 /* [CP] Embed Pods Frameworks */,
+				54C84FEF4F38E3D3CA83F22F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -399,24 +399,29 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		09C1D051F7CFB294EE8C1308 /* [CP] Copy Pods Resources */ = {
+		2B40FEA1953DD0233DC1768D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YelpBusiness/Pods-YelpBusiness-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YelpBusiness/Pods-YelpBusiness-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YelpBusiness-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YelpBusiness/Pods-YelpBusiness-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1F334DECD91191F591379E6E /* [CP] Check Pods Manifest.lock */ = {
+		4E6D9CC110725E1CEA590847 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -438,24 +443,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		70E1B0726BC932BA80B7B18B /* [CP] Embed Pods Frameworks */ = {
+		54C84FEF4F38E3D3CA83F22F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YelpBusiness-YelpBusinessTests/Pods-YelpBusiness-YelpBusinessTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-YelpBusiness/Pods-YelpBusiness-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YelpBusiness-YelpBusinessTests/Pods-YelpBusiness-YelpBusinessTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-YelpBusiness/Pods-YelpBusiness-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YelpBusiness-YelpBusinessTests/Pods-YelpBusiness-YelpBusinessTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YelpBusiness/Pods-YelpBusiness-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		76898C9E4B715B513A8841EC /* [CP] Embed Pods Frameworks */ = {
+		9D26154C25657899401FD0D1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -472,7 +477,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YelpBusiness/Pods-YelpBusiness-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DBDF30D9C9CC782FA4B2EB12 /* [CP] Copy Pods Resources */ = {
+		DEBC8619076C30B8EC0EE49A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -489,26 +494,21 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YelpBusiness-YelpBusinessTests/Pods-YelpBusiness-YelpBusinessTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E995B2F132803542AA5A20F7 /* [CP] Check Pods Manifest.lock */ = {
+		E26776A0C34670370949C877 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YelpBusiness-YelpBusinessTests/Pods-YelpBusiness-YelpBusinessTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-YelpBusiness-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-YelpBusiness-YelpBusinessTests/Pods-YelpBusiness-YelpBusinessTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YelpBusiness-YelpBusinessTests/Pods-YelpBusiness-YelpBusinessTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -563,7 +563,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0397D155149EC9ED18B9FB96 /* Pods-YelpBusiness-YelpBusinessTests.debug.xcconfig */;
+			baseConfigurationReference = 0844001F7DAB2700F65C0CCF /* Pods-YelpBusiness-YelpBusinessTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -590,7 +590,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 734DD4C628F268F4CCBCB214 /* Pods-YelpBusiness-YelpBusinessTests.release.xcconfig */;
+			baseConfigurationReference = DB7903B52B65996ED1DC33E9 /* Pods-YelpBusiness-YelpBusinessTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -614,7 +614,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 617388EDA1E56D13D75A01C4 /* Pods-YelpBusiness.debug.xcconfig */;
+			baseConfigurationReference = 1E4E6E3E1EEC39A44FFB5F3A /* Pods-YelpBusiness.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -642,7 +642,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FFC4D0AAB8EC0AB6C015AC77 /* Pods-YelpBusiness.release.xcconfig */;
+			baseConfigurationReference = 23C3DC00AAD0059E66EA5A88 /* Pods-YelpBusiness.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

@@ -18,7 +18,7 @@ export const initialRegion = {
 
 export const defaultMapPadding = {
   top: (StatusBar.currentHeight || 0) + responsiveHeight(1),
-  bottom: responsiveHeight(27),
+  bottom: responsiveHeight(70),
   left: responsiveWidth(3),
   right: responsiveWidth(3),
 }

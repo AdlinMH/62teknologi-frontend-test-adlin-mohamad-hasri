@@ -48,6 +48,7 @@ export default function <C> ({ Colors, ...args }: CommonParams<C>) {
       shadowRadius: 2.62,
 
       elevation: 2,
+      backgroundColor: Colors.white,
     },
     noButtonShadow: {
       shadowColor: Colors.transparent,
