@@ -24,7 +24,7 @@ function BusinessDetailReviewList({ business_id_or_alias }: Props) {
   /**
    * LOCAL STATES
    */
-  const [limit] = useState<number>(5) // return 5 data by default
+  const [limit] = useState<number>(10) // return 5 data by default
   const [offset, setOffset] = useState<number>(0) // 0 is page 1\
 
   /**

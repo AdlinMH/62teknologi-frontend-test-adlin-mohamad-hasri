@@ -53,7 +53,6 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
         ),
         mapOnRegionChangeComplete: () => {
           if (markerRef && markerRef.current && markerRef.current.showCallout) {
-            console.log('Vddvdvdf', markerRef?.current)
             markerRef?.current?.showCallout()
           }
         }
