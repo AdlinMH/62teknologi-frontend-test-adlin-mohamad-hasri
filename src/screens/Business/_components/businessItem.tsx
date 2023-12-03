@@ -20,6 +20,7 @@ const BusinessItem = ({ item }: { item: Business }) =>{
       <Pressable style={[Layout.row]} onPress={() => { 
         navigate('BusinessDetail', {
           business_id_or_alias: item.id,
+          business_name: item.name,
           coordinate: item.coordinates,
         })
       }}>

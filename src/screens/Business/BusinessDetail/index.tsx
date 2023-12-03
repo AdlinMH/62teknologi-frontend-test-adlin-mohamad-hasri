@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { View, Text, ActivityIndicator } from 'react-native'
 import {LinearGradient} from 'react-native-linear-gradient'
 import { SliderBox } from 'react-native-image-slider-box'
@@ -10,16 +10,19 @@ import { Button } from '@rneui/themed'
 
 import { useTheme } from '@/hooks'
 import { Colors } from '@/theme/variables'
+import { animateToPoint } from '@/utils/functions/map'
 import { Business_Coordinate } from '@/apis/businesses/_types'
 import { useGetBusinessesDetailQuery } from '@/apis/businesses'
 import MapViewMarkersComponents from '@/components/MapCustom/_components/mapViewMarkersComponent'
 import { useMapViewStore } from '@/components/MapCustom/_store/mapViewStore'
-import { animateToPoint } from '@/utils/functions/map'
+
 import BusinessDetailReviewList from '../_components/reviewList'
 import RatingDisplay from '../_components/ratingDisplay'
+import { MapMarker } from 'react-native-maps'
 
 interface Props {
   business_id_or_alias: number
+  business_name: string
   coordinate: Business_Coordinate
 }
 
@@ -28,7 +31,9 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
   const { Layout, Gutters, Fonts } = useTheme()
 
   // params
-  const { business_id_or_alias, coordinate } = route?.params || {}
+  const { business_id_or_alias, business_name, coordinate } = route?.params || {}
+
+  const markerRef = useRef<MapMarker>(null)
 
   /**
    * API: get business detail
@@ -38,15 +43,23 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
 
   useEffect(() => {
     if (coordinate?.latitude && coordinate.longitude) {
-      useMapViewStore.setState({ mapChildren: (
-        <MapViewMarkersComponents point={{
-          latitude: coordinate.latitude,
-          longitude: coordinate.longitude
-        }} />
-      )})
+      useMapViewStore.setState({
+        mapChildren: (
+          <MapViewMarkersComponents
+            point={{ latitude: coordinate.latitude, longitude: coordinate.longitude}}
+            title={business_name}
+            markerRef={markerRef}
+          />
+        ),
+        mapOnRegionChangeComplete: () => {
+          if (markerRef && markerRef.current && markerRef.current.showCallout) {
+            console.log('Vddvdvdf', markerRef?.current)
+            markerRef?.current?.showCallout()
+          }
+        }
+      })
+      animateToPoint(useMapViewStore.getState().mapRefCurrent, coordinate)
     }
-
-    animateToPoint(useMapViewStore.getState().mapRefCurrent, coordinate)
 
     return () => {
       useMapViewStore.setState({ mapChildren: undefined })
