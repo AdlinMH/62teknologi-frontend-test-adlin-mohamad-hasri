@@ -85,11 +85,11 @@ const BusinessSearchNFilterPanel = ({ term, setTerm, selectedAttributes, setSele
         {attributes && (
           <View style={[Layout.fullWidth]}>
             <Animated.View style={[{ marginTop: sectionTitleHeight }, Layout.rowHCenter, Layout.justifyContentBetween, Layout.fullWidth, Gutters.paddingBottomSmall, Gutters.paddingTopSmall, Gutters.paddingHorizontalRegular]}>
-              <Text style={[Fonts.sizeSmall, Fonts.familyBold, Fonts.weight600, Fonts.colorBlack500]}>
+              <Text style={[Fonts.sizeMedium, Fonts.familyBold, Fonts.weight600, Fonts.colorBlack500]}>
                 Filter
               </Text>
               {!!selectedAttributes.length && (
-                <Text style={[Fonts.sizeTiny, Fonts.familyRegular, Fonts.colorBlack500]}>
+                <Text style={[Fonts.sizeRegular, Fonts.familyRegular, Fonts.colorBlack500]}>
                   {`${selectedAttributes.length}/${attributes.length} selected`}
                 </Text>
               )}

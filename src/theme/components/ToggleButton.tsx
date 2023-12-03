@@ -25,7 +25,7 @@ const ToggleButton = (props: Props) => {
 
   const styles = {
     'false': {
-      buttonStyle: [Layout.backgroundBlack200, Layout.borderWidth0],
+      buttonStyle: [Layout.backgroundBlack300, Layout.borderWidth0],
       titleStyle: [Fonts.colorBlack900],
 
     },
@@ -56,9 +56,8 @@ const ToggleButton = (props: Props) => {
         buttonStyle,
       ]}
       titleStyle={[
-        Fonts.sizeTiny,
+        Fonts.sizeRegular,
         Fonts.familyMedium,
-        Fonts.weight400,
         styles[`${isToggled}`].titleStyle,
         titleStyle,
       ]}
