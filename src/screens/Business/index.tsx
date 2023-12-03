@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 import { responsiveScreenHeight } from 'react-native-responsive-dimensions'
-import { createStackNavigator } from '@react-navigation/stack'
+import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import FeatherIcons from 'react-native-vector-icons/Feather'
 import { Button } from '@rneui/base'
@@ -44,7 +44,10 @@ function BusinessScreen() {
         <SafeAreaView style={[Layout.fullHeight, Layout.borderColorBlack200, Layout.borderWidth0_5, Common.buttonShadow]} edges={currScreenIsDetail ? [] : ['top', 'bottom']}>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="BusinessList" component={BusinessList} />
-            <Stack.Screen name="BusinessDetail" component={BusinessDetail} />
+            <Stack.Screen name="BusinessDetail" component={BusinessDetail} options={{
+              title: 'Profile',
+              cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid,
+            }} />
           </Stack.Navigator>
         </SafeAreaView>
       </HomeBottomSheet>
