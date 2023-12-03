@@ -16,6 +16,8 @@ import BusinessDetail from './BusinessDetail'
 
 const Stack = createStackNavigator()
 
+const businessDetailPanelHeight = responsiveScreenHeight(75)
+
 const LazyMapViewComponent = React.lazy(() => import('@/components/MapCustom'))
 
 function BusinessScreen() {
@@ -38,10 +40,10 @@ function BusinessScreen() {
       {/* Custom BottomSheet */}
       <HomeBottomSheet
         collapsed={currScreenIsDetail}
-        collapsedHeight={responsiveScreenHeight(75)}
+        collapsedHeight={businessDetailPanelHeight}
         panelStyle={[Layout.fullHeight, { zIndex: 1 }]}
       >
-        <SafeAreaView style={[Layout.fullHeight, Layout.borderColorBlack300, Layout.borderWidth0_5, Common.buttonShadow]} edges={currScreenIsDetail ? [] : ['top', 'bottom']}>
+        <SafeAreaView style={[currScreenIsDetail ? { height: businessDetailPanelHeight } : Layout.fullHeight, Layout.borderColorBlack300, Layout.borderWidth0_5, Common.buttonShadow]} edges={currScreenIsDetail ? [] : ['top', 'bottom']}>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="BusinessList" component={BusinessList} />
             <Stack.Screen name="BusinessDetail" component={BusinessDetail} options={{
