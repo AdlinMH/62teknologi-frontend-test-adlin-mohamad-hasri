@@ -6,11 +6,11 @@ import { responsiveHeight } from 'react-native-responsive-dimensions'
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 
 import { useTheme } from '@/hooks'
-
 import FocusAwareStatusBar from '@/components/FocusAwareStatusBar'
 
 export type CustomBottomSheetProps = {
-  isVisible: boolean
+  collapsed: boolean
+  collapsedHeight: number
   children: any
   panelStyle?: StyleProp<ViewStyle>
   containerStyle?: StyleProp<ViewStyle>
@@ -19,29 +19,26 @@ export type CustomBottomSheetProps = {
 const SCREEN_HEIGHT = responsiveHeight(100)
 
 const HomeBottomSheet = ({
-  isVisible, panelStyle, containerStyle, children,
+  collapsed, collapsedHeight, panelStyle, containerStyle, children,
 } : CustomBottomSheetProps) => {
   const { Layout, Gutters } = useTheme()
 
   const panelBottomStyle = useAnimatedStyle(() => ({
-    bottom: isVisible
-      ? withTiming(0, { duration: 200 })
-      : withTiming(-SCREEN_HEIGHT, { duration: 100 }),
-  }), [isVisible])
+    bottom: collapsed
+      ? withTiming(-(SCREEN_HEIGHT - collapsedHeight), { duration: 200 })
+      : withTiming(0, { duration: 200 }),
+  }), [collapsed])
 
   return (
     <>
-      {/* backdrop */}
-      {isVisible && (
-        <FocusAwareStatusBar />
-      )}
+      {/* status bar */}
+      <FocusAwareStatusBar />
 
-      {/* children container */}
+      {/* content container */}
       <Animated.View style={[
         Layout.col, Layout.fullWidth, Layout.positionAbsolute, Layout.backgroundWhite,
         Gutters.radiusTopLeftSmall, Gutters.radiusTopRightSmall,
         {
-          // display: isVisible ? 'flex' : 'none',
           height: 'auto',
           zIndex: 9999,
         },

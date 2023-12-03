@@ -9,6 +9,8 @@ import HomeBottomSheet from './_components/homeBottomSheet'
 
 import BusinessList from './BusinessList'
 import BusinessDetail from './BusinessDetail'
+import { responsiveScreenHeight } from 'react-native-responsive-dimensions'
+import { getCurrentScreenName } from '@/navigators/utils'
 
 const Stack = createStackNavigator()
 
@@ -17,16 +19,19 @@ const LazyMapViewComponent = React.lazy(() => import('@/components/MapCustom'))
 function BusinessScreen() {
   const { Layout } = useTheme()
 
+  const currScreenIsDetail = getCurrentScreenName() === 'BusinessDetail'
+
   return (
     <View style={[Layout.fill]}>
       {/* Map Component */}
       <LazyMapViewComponent />
 
       <HomeBottomSheet
-        isVisible={true}
+        collapsed={currScreenIsDetail}
+        collapsedHeight={responsiveScreenHeight(50)}
         panelStyle={[Layout.fullHeight, { zIndex: 1 }]}
       >
-        <SafeAreaView style={[Layout.fullHeight]}>
+        <SafeAreaView style={[Layout.fullHeight]} edges={currScreenIsDetail ? [] : ['top', 'bottom']}>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="BusinessList" component={BusinessList} />
             <Stack.Screen name="BusinessDetail" component={BusinessDetail} />
