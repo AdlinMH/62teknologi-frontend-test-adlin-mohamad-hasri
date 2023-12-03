@@ -14,7 +14,12 @@ const BusinessItem = ({ item }: { item: Business }) =>{
 
   return (
     <Card containerStyle={[Gutters.radiusTiny, Gutters.marginHorizontalTiny]}>
-      <Pressable style={[Layout.row]} onPress={() => { navigate('BusinessDetail', { business_id_or_alias: item.id }) }}>
+      <Pressable style={[Layout.row]} onPress={() => { 
+        navigate('BusinessDetail', {
+          business_id_or_alias: item.id,
+          coordinate: item.coordinates,
+        })
+      }}>
         {/* left side - image content */}
         <FastImage
           style={[

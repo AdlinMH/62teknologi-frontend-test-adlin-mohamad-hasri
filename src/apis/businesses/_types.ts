@@ -71,8 +71,8 @@ export type Business_Category = {
   title: string
 }
 export type Business_Coordinate = {
-  latitude: string
-  longitude: string
+  latitude: number
+  longitude: number
 }
 export type Business_Location = {
   address1: string

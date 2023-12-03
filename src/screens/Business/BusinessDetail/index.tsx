@@ -1,33 +1,60 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, Text, ActivityIndicator } from 'react-native'
-import { AirbnbRating, Chip } from '@rneui/themed'
+import {LinearGradient} from 'react-native-linear-gradient'
 import { SliderBox } from 'react-native-image-slider-box'
-import Toast from 'react-native-toast-message'
-import FastImage from 'react-native-fast-image'
 import { Route } from '@react-navigation/native'
+import FastImage from 'react-native-fast-image'
+import Toast from 'react-native-toast-message'
+import { AirbnbRating, Chip } from '@rneui/themed'
 import { Button } from '@rneui/themed'
 
 import { useTheme } from '@/hooks'
-import { useGetBusinessesDetailQuery } from '@/apis/businesses'
-import {LinearGradient} from 'react-native-linear-gradient'
 import { Colors } from '@/theme/variables'
+import { useGetBusinessesDetailQuery } from '@/apis/businesses'
+import { useMapViewStore } from '@/components/MapCustom/_store/mapViewStore'
+import MapViewMarkersComponents from '@/components/MapCustom/_components/mapViewMarkersComponent'
+import { Business_Coordinate } from '@/apis/businesses/_types'
+import { animateToPoint } from '@/utils/functions/map'
 
 interface Props {
   business_id_or_alias: number
+  coordinate: Business_Coordinate
 }
 
 function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) {
   // theming/styling
   const { Layout, Gutters, Fonts } = useTheme()
 
+  // map store
+  // const 
+
   // params
-  const { business_id_or_alias } = route?.params || {}
+  const { business_id_or_alias, coordinate } = route?.params || {}
 
   /**
    * API: get business detail
    * */
   const { isLoading, isFetching, data, error, refetch } = useGetBusinessesDetailQuery({ business_id_or_alias })
   const { status: errStatus, data: errData } = (error || {}) as any
+
+  useEffect(() => {
+    if (coordinate?.latitude && coordinate.longitude) {
+      useMapViewStore.setState({ mapChildren: (
+        <MapViewMarkersComponents point={{
+          latitude: coordinate.latitude,
+          longitude: coordinate.longitude
+        }}
+        />
+      )})
+    }
+
+    // useMapViewStore.getState().mapRefCurrent?.animateCamera()
+    animateToPoint(useMapViewStore.getState().mapRefCurrent, coordinate)
+
+    return () => {
+      useMapViewStore.setState({ mapChildren: undefined })
+    }
+  }, [coordinate])
 
   /**
    * VIEWS
@@ -44,7 +71,7 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
               circleLoop
             />
             <View style={[Layout.positionAbsolute, Gutters.bottomNone, Layout.fullWidth]}>
-              <LinearGradient colors={[Colors.transparent, Colors.black400]} style={[Gutters.paddingSmall, Layout.col, Layout.itemsStart]}>
+              <LinearGradient colors={[Colors.transparent, Colors.black500]} style={[Gutters.paddingSmall, Layout.col, Layout.itemsStart]}>
                 <Text style={[Fonts.h1, Fonts.colorWhite, Fonts.textBold, Gutters.marginBottomTiny]}>
                   {data?.name}
                 </Text>
@@ -94,3 +121,4 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
 }
 
 export default BusinessDetail
+

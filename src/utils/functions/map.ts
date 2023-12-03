@@ -3,7 +3,7 @@ import MapView, { LatLng } from 'react-native-maps'
 
 import { defaultMapPadding } from '../constants'
 
-const animateToPoint = (mapRefCurrent: MapView | null, coord?: LatLng | null, autoZoom = true) => {
+export const animateToPoint = (mapRefCurrent: MapView | null, coord?: LatLng | null, autoZoom = true) => {
   if (!coord || !coord?.latitude || !coord?.longitude) return // () => undefined
   if (!mapRefCurrent) return
 
