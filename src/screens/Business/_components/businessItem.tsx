@@ -43,7 +43,7 @@ const BusinessItem = ({ item }: { item: Business }) =>{
           <RatingDisplay item={item} size="sm" />
           <View style={[Layout.row, { flexWrap: 'wrap' }]}>
             {item.categories?.map((cat) => (
-              <Chip type="solid" color={Colors.primary400} size="sm" title={cat.title} buttonStyle={[Gutters.paddingVerticalNone]} containerStyle={[Gutters.marginRightTiny, { marginTop: 5 }]} />
+              <Chip key={`category_${cat.alias}`} type="solid" color={Colors.primary400} size="sm" title={cat.title} buttonStyle={[Gutters.paddingVerticalNone]} containerStyle={[Gutters.marginRightTiny, { marginTop: 5 }]} />
             ))}
           </View>
         </View>

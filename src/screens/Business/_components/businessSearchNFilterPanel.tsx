@@ -6,47 +6,42 @@ import { useDebouncedCallback } from 'use-debounce'
 import { Button, Card, Input } from '@rneui/themed'
 
 import { useTheme } from '@/hooks'
-import ToggleButton from '@/theme/components/ToggleButton'
-import { titleCase } from '@/utils/functions/strings'
 import { Colors } from '@/theme/variables/Colors'
+import ToggleButton from '@/theme/components/ToggleButton'
+// import { useGetCategoriesQuery } from '@/apis/categories'
 
 interface Props {
   term: string | undefined
   setTerm: React.Dispatch<React.SetStateAction<string | undefined>>
-  selectedAttributes: string[]
-  setSelectedAttributes: React.Dispatch<React.SetStateAction<string[]>>
+  selectedCategories: string[]
+  setSelectedCategories: React.Dispatch<React.SetStateAction<string[]>>
 }
 
-const attributes = [
-  'hot_and_new',
-  'request_a_quote',
-  'reservation',
-  'waitlist_reservation',
-  'deals',
-  'gender_neutral_restrooms',
-  'open_to_all',
-  'wheelchair_accessible',
-  'outdoor_seating',
-  'parking_garage',
-  'parking_lot',
-  'parking_street',
-  'parking_valet',
-  'parking_validated',
-  'parking_bike',
-  'restaurants_delivery',
-  'restaurants_takeout',
-  'wifi_free',
-  'wifi_paid',
+const categories = [
+  { alias: 'korean', title: 'Korean' },
+  { alias: 'tapasmallplates', title: 'Tapas/Small Plates' },
+  { alias: 'bbq', title: 'Barbeque' },
+  { alias: 'newamerican', title: 'New American' },
+  { alias: 'pizza', title: 'Pizza' },
+  { alias: 'seafood', title: 'Seafood' },
+  { alias: 'thai', title: 'Thai' },
+  { alias: 'french', title: 'French' },
+  { alias: 'cocktailbars', title: 'Cocktail Bars' },
+  { alias: 'noodles', title: 'Noodles' },
+  { alias: 'asianfusion', title: 'Asian Fusion' },
+  { alias: 'steak', title: 'Steakhouses' },
+  { alias: 'ramen', title: 'Ramen' },
+  { alias: 'chicken_wings', title: 'Chicken Wings' },
 ]
 
-const BusinessSearchNFilterPanel = ({ term, setTerm, selectedAttributes, setSelectedAttributes }: Props) =>{
+const BusinessSearchNFilterPanel = ({ term, setTerm, selectedCategories, setSelectedCategories }: Props) =>{
   const { Layout, Gutters, Fonts } = useTheme()
 
   const [showFilter, setShowFilter] = useState<boolean>(false)
 
   const debouncedSetTerm = useDebouncedCallback((value) => { setTerm(value) }, 800)
 
-  const filterIsAny = useMemo(() => (selectedAttributes?.length || 0) > 0, [selectedAttributes])
+  const filterIsAny = useMemo(() => (selectedCategories?.length || 0) > 0, [selectedCategories])
 
   const offset = useRef(new Animated.Value(0)).current
 
@@ -55,6 +50,13 @@ const BusinessSearchNFilterPanel = ({ term, setTerm, selectedAttributes, setSele
     outputRange: [0, -20, -50],
     extrapolate: 'clamp',
   })
+
+  /**
+   * API: get categories
+   * */
+  // const { isLoading, isFetching, data, error, refetch } = useGetCategoriesQuery({})
+  // const { categories } = data || []
+  // const { status: errStatus, data: errData } = (error || {}) as any
 
   return (
     <View style={[Layout.borderBottomColorBlack200, { borderBottomWidth: 1 }]}>
@@ -65,7 +67,7 @@ const BusinessSearchNFilterPanel = ({ term, setTerm, selectedAttributes, setSele
           leftIcon={<FeatherIcons name="search" size={20} />}
           rightIcon={(
             <Button type={showFilter ? (filterIsAny ? 'solid' : 'outline') : 'clear'} onPress={() => {
-              if ((selectedAttributes?.length || 0) === 0) setShowFilter((prev) => !prev)
+              if ((selectedCategories?.length || 0) === 0) setShowFilter((prev) => !prev)
             }}>
               <FeatherIcons name="filter" size={20} color={showFilter ? (filterIsAny ? 'white' : Colors.information600) : 'black'} />
             </Button>
@@ -82,33 +84,33 @@ const BusinessSearchNFilterPanel = ({ term, setTerm, selectedAttributes, setSele
       </Card>
 
       <Collapsible collapsed={!showFilter}>
-        {attributes && (
+        {categories && (
           <View style={[Layout.fullWidth]}>
             <Animated.View style={[{ marginTop: sectionTitleHeight }, Layout.rowHCenter, Layout.justifyContentBetween, Layout.fullWidth, Gutters.paddingBottomSmall, Gutters.paddingTopSmall, Gutters.paddingHorizontalRegular]}>
               <Text style={[Fonts.sizeMedium, Fonts.familyBold, Fonts.weight600, Fonts.colorBlack500]}>
                 Filter
               </Text>
-              {!!selectedAttributes.length && (
+              {!!selectedCategories.length && (
                 <Text style={[Fonts.sizeRegular, Fonts.familyRegular, Fonts.colorBlack500]}>
-                  {`${selectedAttributes.length}/${attributes.length} selected`}
+                  {`${selectedCategories.length}/${categories.length} selected`}
                 </Text>
               )}
             </Animated.View>
             <FlatList
-              data={attributes.map((s) => titleCase(s.replace(/\_/gm, ' ')))}
+              data={categories}
               horizontal
               renderItem={(({ item }) => (
                 <ToggleButton
-                  title={item}
+                  title={item.title}
                   onChange={(isToggled) => {
-                    setSelectedAttributes((prev) => {
-                      if (isToggled) return [...prev, item]
-                      return prev.filter((f) => f !== item)
+                    setSelectedCategories((prev) => {
+                      if (isToggled) return [...prev, item.alias]
+                      return prev.filter((f) => f !== item.alias)
                     })
                   }}
                 />
               ))}
-              keyExtractor={(__, index) => `mitracucifeatureitem-${index}`}
+              keyExtractor={(__, index) => `item-${index}`}
               // refreshing={isLoading || featureIsLoading}
               style={[Gutters.marginLeftRegular]}
               showsHorizontalScrollIndicator={false}

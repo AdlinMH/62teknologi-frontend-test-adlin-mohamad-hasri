@@ -23,13 +23,14 @@ function BusinessList() {
   const [limit] = useState<number>(10) // return 5 data by default
   const [offset, setOffset] = useState<number>(0) // 0 is page 1
   const [term, setTerm] = useState<string | undefined>()
-  const [selectedAttributes, setSelectedAttributes] = useState<string[]>([])
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
 
   /**
    * API: get business search
    * */
-  const { isLoading, isFetching, data, error, refetch } = useGetBusinessesSearchQuery({ location: 'NYC', limit, offset, term, attributes: selectedAttributes || [] })
+  const { isLoading, isFetching, data, error, refetch } = useGetBusinessesSearchQuery({ location: 'NYC', limit, offset, term, categories: selectedCategories || [] })
   const { status: errStatus, data: errData } = (error || {}) as any
+
 
   /**
    * RENDER ITEMS
@@ -48,8 +49,8 @@ function BusinessList() {
       <BusinessSearchNFilterPanel
         term={term}
         setTerm={setTerm}
-        selectedAttributes={selectedAttributes}
-        setSelectedAttributes={setSelectedAttributes}
+        selectedCategories={selectedCategories}
+        setSelectedCategories={setSelectedCategories}
       />
 
       <View style={[Layout.fill, Layout.positionRelative]}>
@@ -65,12 +66,14 @@ function BusinessList() {
         />
 
         {/* Pagination */}
-        <BusinessListPagination
-          offset={offset}
-          limit={limit}
-          total={data?.total || 0}
-          setOffset={setOffset}
-        />
+        {data?.businesses?.length ? (
+          <BusinessListPagination
+            offset={offset}
+            limit={limit}
+            total={data?.total || 0}
+            setOffset={setOffset}
+          />
+        ) : null}
 
         {/* Display Loading */}
         {(isLoading || isFetching) && (

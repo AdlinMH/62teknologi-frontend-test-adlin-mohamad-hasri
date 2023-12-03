@@ -5,11 +5,26 @@ import { BusinessesGetDetailParams as BusinessesGetDetailPathParams, BusinessesG
 export const businessesApi = api.injectEndpoints({
   endpoints: (build) => ({
     getBusinessesSearch: build.query<BusinessesGetSearchRes, BusinessesGetSearchReq>({
-      query: (params) => ({
-        url: `/v3/businesses/search`,
+      query: (params) => {
+        const _params = new URLSearchParams()
+        Object.entries(params).map(([key, value]) => {
+          if (value) {
+            if (Array.isArray(value)) {
+              value.map((v) => {
+                _params.append(key, String(v))
+              })
+            } else {
+              _params.append(key, String(value))
+            }
+          }
+        })
+
+        const querystring = _params.toString()
+        return ({
+        url: `/v3/businesses/search${querystring ? '?' : ''}${querystring}`,
         method: 'GET',
-        params,
-      }),
+        // params,
+      })},
     }),
     getBusinessesDetail: build.query<BusinessesGetDetailRes, BusinessesGetDetailPathParams>({
       query: (params) => ({
