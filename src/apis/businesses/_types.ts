@@ -32,7 +32,6 @@ export type BusinessesGetSearchRes = {
 }
 
 
-
 /**
  * GET: business get detail
  * */
@@ -42,6 +41,25 @@ export type BusinessesGetDetailParams = {
 export type BusinessesGetDetailRes = Omit<Business, 'distance' | 'attributes'> & {
   is_claimed: boolean
   photos: string[]
+}
+
+
+/**
+ * GET: business get review
+ * */
+export type BusinessesGetReviewParams = {
+  business_id_or_alias: number | undefined
+}
+export type BusinessesGetReviewReq = {
+  locale?: string
+  offset?: number
+  limit?: number
+  sort_by?: string
+}
+export type BusinessesGetReviewRes = {
+  total: number
+  reviews: Business_Review[]
+  possible_languages: string[]
 }
 
 
@@ -95,4 +113,18 @@ export type Business_Hour_Open = {
   start: string
   end: string
   is_overnight: boolean
+}
+export type Business_Review = {
+id: string
+url: string
+text: string
+rating: number
+time_created: string
+user: Business_Review_User
+}
+export type Business_Review_User = {
+  id: string
+  profile_url: string
+  image_url: string | null
+  name: string
 }
