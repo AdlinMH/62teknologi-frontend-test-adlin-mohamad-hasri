@@ -12,3 +12,13 @@ export type ApplicationStackParamList = {
 
 export type ApplicationScreenProps =
   StackScreenProps<ApplicationStackParamList>;
+
+export type NavigationScreenArgsType<T = any> = T & {
+  title?: string
+
+  [key: string]: any
+}
+
+export type NavigationScreenArgs = {
+  [key: string]: any
+}
