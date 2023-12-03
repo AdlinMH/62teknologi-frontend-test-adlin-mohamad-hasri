@@ -15,7 +15,7 @@ import { useGetBusinessesDetailQuery } from '@/apis/businesses'
 import MapViewMarkersComponents from '@/components/MapCustom/_components/mapViewMarkersComponent'
 import { useMapViewStore } from '@/components/MapCustom/_store/mapViewStore'
 import { animateToPoint } from '@/utils/functions/map'
-import BusinessDetailReviews from './reviews'
+import BusinessDetailReviewList from '../_components/reviewList'
 
 interface Props {
   business_id_or_alias: number
@@ -95,7 +95,7 @@ function BusinessDetail({ route } : { route?: Route<'BusinessDetail', Props> }) 
         </View>
       )}
 
-      <BusinessDetailReviews business_id_or_alias={business_id_or_alias} />
+      <BusinessDetailReviewList business_id_or_alias={business_id_or_alias} />
 
      {/* Body */}
       <View style={[Gutters.paddingHorizontalSmall]}>
