@@ -9,21 +9,22 @@ It is a simple application using the React Native language with the following AP
 ### Business List Screen
 
 List business page with features consisting of:
-##### ● pagination
-##### ● search by term
-##### ● filter by categories
+1. pagination
+2. search by term
+3. filter by categories
 
-[](https://github.com/AdlinMH/62teknologi-frontend-test-adlin-mohamad-hasri/blob/main/quick-review-1.gif)
+![](https://github.com/AdlinMH/62teknologi-frontend-test-adlin-mohamad-hasri/blob/main/quick-review-1.gif)
 
 
 ### Business Detail Screen
 
 Business details page with features consisting of:
-##### ● Photo slideshow
-##### ● list reviews
-##### ● rating + see on gmaps
+1. Photo slideshow
+2. list reviews
+3. rating + see on gmaps
 
-[](https://github.com/AdlinMH/62teknologi-frontend-test-adlin-mohamad-hasri/blob/main/quick-review-2.gif)
+![](https://github.com/AdlinMH/62teknologi-frontend-test-adlin-mohamad-hasri/blob/main/quick-review-2.gif)
+
 
 
 ## How to Run Project
