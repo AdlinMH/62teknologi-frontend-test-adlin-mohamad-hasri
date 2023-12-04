@@ -2,6 +2,7 @@ import React, { useMemo, useRef, useState } from 'react'
 import { Animated, FlatList, Text, View } from 'react-native'
 import Collapsible from 'react-native-collapsible'
 import FeatherIcons from 'react-native-vector-icons/Feather'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { useDebouncedCallback } from 'use-debounce'
 import { Button, Card, Input } from '@rneui/themed'
 
@@ -38,6 +39,7 @@ const BusinessSearchNFilterPanel = ({ term, setTerm, selectedCategories, setSele
   const { Layout, Gutters, Fonts } = useTheme()
 
   const [showFilter, setShowFilter] = useState<boolean>(false)
+  const [searchNearbyIsActive, setSearchNearbyIsActive] = useState<boolean>(false)
 
   const debouncedSetTerm = useDebouncedCallback((value) => { setTerm(value) }, 800)
 
@@ -66,11 +68,16 @@ const BusinessSearchNFilterPanel = ({ term, setTerm, selectedCategories, setSele
           placeholder='Search'
           leftIcon={<FeatherIcons name="search" size={20} />}
           rightIcon={(
-            <Button type={showFilter ? (filterIsAny ? 'solid' : 'outline') : 'clear'} onPress={() => {
-              if ((selectedCategories?.length || 0) === 0) setShowFilter((prev) => !prev)
-            }}>
-              <FeatherIcons name="filter" size={20} color={showFilter ? (filterIsAny ? 'white' : Colors.information600) : 'black'} />
-            </Button>
+            <View style={[Layout.row]}>
+              <Button type={showFilter ? (filterIsAny ? 'solid' : 'outline') : 'clear'} onPress={() => {
+                if ((selectedCategories?.length || 0) === 0) setShowFilter((prev) => !prev)
+              }}>
+                <FeatherIcons name="filter" size={20} color={showFilter ? (filterIsAny ? 'white' : Colors.information600) : 'black'} />
+              </Button>
+              <Button type={searchNearbyIsActive ? 'solid' : 'clear'} onPress={() => { setSearchNearbyIsActive((prev) => !prev) }}>
+                <MaterialIcons name="location-history" size={24} color={searchNearbyIsActive ? 'white' : 'black'} />
+              </Button>
+            </View>
           )}
           underlineColorAndroid="transparent"
           errorStyle={[Layout.hidden]}
